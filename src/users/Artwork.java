@@ -16,6 +16,7 @@ public class Artwork {
     private double reservePrive;
     private double currentPrice;
     private int bidsAllowed;
+    private int bidsLeft;
     private String timeEntered;
     private double height;
     private double width;
@@ -31,6 +32,7 @@ public class Artwork {
      * @param reservePrive
      * @param currentPrice
      * @param bidsAllowed
+     * @param bidsLeft
      * @param timeEntered
      * @param height
      * @param width
@@ -46,6 +48,8 @@ public class Artwork {
         this.reservePrive = reservePrive;
         this.currentPrice = currentPrice;
         this.bidsAllowed = bidsAllowed;
+        this.bidsLeft = bidsAllowed;
+
         this.timeEntered = timeEntered;
         this.height = height;
         this.width = width;
@@ -57,6 +61,14 @@ public class Artwork {
      */
     public void setCurrentPrice(double currentPrice) {
         this.currentPrice = currentPrice;
+    }
+
+    /**
+     * Sets the number of bids left until the end of the auction
+     * @param bidsLeft
+     */
+    public void setBidsLeft(int bidsLeft) {
+        this.bidsLeft = bidsLeft;
     }
 
     /**
@@ -129,6 +141,14 @@ public class Artwork {
      */
     public int getBidsAllowed() {
         return bidsAllowed;
+    }
+
+    /**
+     * Gets the number of bids left
+     * @return bidsLeft
+     */
+    public int getBidsLeft() {
+        return bidsLeft;
     }
 
     /**
