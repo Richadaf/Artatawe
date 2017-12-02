@@ -6,7 +6,7 @@ package users;
 
 public class Painting extends Artwork {
     /**
-     *
+     * Constructs an instance of painting
      * @param seller
      * @param title
      * @param description

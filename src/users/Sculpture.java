@@ -11,7 +11,7 @@ public class Sculpture extends Artwork {
     private String[] adPhotos;
 
     /**
-     *
+     * Constructs and instance of sculpture
      * @param seller
      * @param title
      * @param description
@@ -37,7 +37,7 @@ public class Sculpture extends Artwork {
     }
 
     /**
-     *
+     * Gets the depth
      * @return depth
      */
     public double getDepth() {
@@ -45,16 +45,16 @@ public class Sculpture extends Artwork {
     }
 
     /**
-     *
-     * @return material piece is made from
+     * Gets material the sculpture is amde from
+     * @return material
      */
     public String getMaterial() {
         return material;
     }
 
     /**
-     *
-     * @return additional photos
+     * Gets additional photos
+     * @return aadPhotos
      */
     public String[] getAdPhotos() {
         return adPhotos;

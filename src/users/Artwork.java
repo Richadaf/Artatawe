@@ -93,7 +93,7 @@ public class Artwork {
 
     /**
      * Gtes name of creator
-     * @return name of creator
+     * @return nameOfCreator
      */
     public String getNameOfCreator() {
         return nameOfCreator;
@@ -101,7 +101,7 @@ public class Artwork {
 
     /**
      * Gets year it was made
-     * @return year made
+     * @return yearMade
      */
     public int getYearMade() {
         return yearMade;
@@ -109,7 +109,7 @@ public class Artwork {
 
     /**
      * Gets the reserve price
-     * @return reserve price
+     * @return reservePrice
      */
     public double getReservePrive() {
         return reservePrive;
@@ -117,7 +117,7 @@ public class Artwork {
 
     /**
      * Gets the current price
-     * @return current price
+     * @return currentPrice
      */
     public double getCurrentPrice() {
         return currentPrice;
@@ -125,7 +125,7 @@ public class Artwork {
 
     /**
      * Gets the number of bids allowed
-     * @return number of bids allowed
+     * @return bidsAllowed
      */
     public int getBidsAllowed() {
         return bidsAllowed;
@@ -133,7 +133,7 @@ public class Artwork {
 
     /**
      *Gets the time the artwork was entered
-     * @return time artwork was entered
+     * @return timeEntered
      */
     public String getTimeEntered() {
         return timeEntered;
