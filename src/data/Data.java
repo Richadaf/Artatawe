@@ -62,12 +62,13 @@ public class Data {
 		}else{
 			 
 			//Removes old user data from list of users 
-			for(User u: users){
-				if(u.getUserId() == mUser.getUserId()){
+			for(int i = 0; i < users.size(); i++) {
+				User u = users.get(i);
+				if(u.getUserId() == mUser.getUserId()) {
 					users.remove(users.indexOf(u));
 					//adds new User data
 					users.add(mUser);
-					break;
+					i = users.size();
 				}
 			}
 			//Refreshes the Database
@@ -87,27 +88,6 @@ public class Data {
 		}
 		return false;
 	}
-
-	//Check file if user exists in file 
-	private static User checkUserExistInFile(User user) {
-		Scanner scanner = null;
-		try {
-			scanner = new Scanner(new File("users.txt"));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		String currentLine;
-
-		while(scanner.hasNextLine()){
-			currentLine = scanner.nextLine();
-			if(currentLine.contains(String.valueOf(user.getUserId()))){
-				return getUser(user.getUserId());
-			}
-			}
-			
-			return null;
-		
-		}
 	
 	//Resets all files
 	/**
@@ -129,9 +109,9 @@ public class Data {
 	 * @param id users id
 	 * @return User instance with matching id
 	 */
-	public static User getUser(int id){
+	public static User getUser(int id) {
 		for(User u: users){
-			if (u.getUserId() == id){
+			if (u.getUserId() == id) {
 				return u;
 			}
 		}
@@ -141,4 +121,28 @@ public class Data {
 	//Should be in User\
 	
 	//+ART_INORDER():Artworks[]   should be in artwork tree 
+	
+	
+	
+	
+	//Check file if user exists in file 
+	private static User checkUserExistInFile(User user) {
+		Scanner scanner = null;
+		try {
+			scanner = new Scanner(new File("users.txt"));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} 
+		String currentLine;
+		
+		while(scanner.hasNextLine()) {
+			currentLine = scanner.nextLine();
+			if(currentLine.contains(String.valueOf(user.getUserId()))){
+				return getUser(user.getUserId());
+			}
+		}
+		
+		return null;
+		
+	}
 }
