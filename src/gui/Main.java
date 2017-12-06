@@ -1,6 +1,6 @@
-package sample;
+package gui;
 
-import com.sun.deploy.util.ArrayUtil;
+// import com.sun.deploy.util.ArrayUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
