@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.security.AllPermission;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -49,7 +50,20 @@ public class Data {
 			file.createNewFile();
 		}
 		
-		User foundProfile = null;
+		//if user isnt in list, add and refresh database
+			if(getUser(mUser.getUserName()) == null){
+				users.add(mUser);
+				Data.reset();
+				writer = new BufferedWriter(new FileWriter(file));
+				for(User u: getAllUsers()){
+					writer.write(u.toString());
+					writer.write("\n");					
+					writer.write(FILE_DELIMETER);
+					writer.write("\n");	
+				}
+			}
+	
+			User foundProfile = null;
 		foundProfile = checkUserExistInFile(mUser);
 		
 		if(foundProfile == null){
@@ -59,26 +73,6 @@ public class Data {
 			writer.write("\n");
 			writer.write(FILE_DELIMETER);
 			writer.write("\n");
-		}else{
-			 
-			//Removes old user data from list of users 
-			for(User u: users){
-				if(u.getUserId() == mUser.getUserId()){
-					users.remove(users.indexOf(u));
-					//adds new User data
-					users.add(mUser);
-					break;
-				}
-			}
-			//Refreshes the Database
-			Data.init();
-			writer = new BufferedWriter(new FileWriter(file));
-			for(User u: getAllUsers()){
-				writer.write(u.toString());
-				writer.write("\n");					
-				writer.write(FILE_DELIMETER);
-				writer.write("\n");	
-			}
 		}
 		if(writer!= null) writer.close();
 		return true;
@@ -87,33 +81,12 @@ public class Data {
 		}
 		return false;
 	}
-
-	//Check file if user exists in file 
-	private static User checkUserExistInFile(User user) {
-		Scanner scanner = null;
-		try {
-			scanner = new Scanner(new File("users.txt"));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		String currentLine;
-
-		while(scanner.hasNextLine()){
-			currentLine = scanner.nextLine();
-			if(currentLine.contains(String.valueOf(user.getUserId()))){
-				return getUser(user.getUserId());
-			}
-			}
-			
-			return null;
-		
-		}
 	
 	//Resets all files
 	/**
 	 * Resets all files back to empty
 	 */
-	public static void init(){
+	public static void reset(){
 		File file = new File("users.txt");
 		if(file.isFile()){
 			file.delete();
@@ -129,16 +102,137 @@ public class Data {
 	 * @param id users id
 	 * @return User instance with matching id
 	 */
-	public static User getUser(int id){
+	public static User getUser(int id) {
 		for(User u: users){
-			if (u.getUserId() == id){
+			if (u.getUserId() == id) {
 				return u;
 			}
 		}
+		return null;
+	}
+	/**
+	 * Searches user database for username that matches {@code username}
+	 * @see User
+	 * @param username user-defined username
+	 * @return User instance with matching username
+	 */
+	public static User getUser(String username){
+		for(User u: users){
+			if(u.getUserName().equalsIgnoreCase(username)){
+				return u;
+			}
+		}
+		/*//User isnt found in arrayList, so check file name
+		User checkedUser = checkUserExistInFile(username);
+		if(checkedUser != null){
+			users.add(checkedUser);
+			return checkedUser;
+		}*/
 		return null;
 	}
 	//+GET_USER_ID(file: UserFile): int
 	//Should be in User\
 	
 	//+ART_INORDER():Artworks[]   should be in artwork tree 
+	
+	
+	
+	
+	//Check file if user exists in file 
+	private static User checkUserExistInFile(User user) {
+		Scanner scanner = null;
+		try {
+			File users = new File("users.txt");
+			scanner = new Scanner(users);
+		String currentLine;
+		
+		while(scanner.hasNextLine()) {
+			currentLine = scanner.nextLine();
+			if(currentLine.contains(String.valueOf(user.getUserName()))){
+				return getUser(user.getUserId());
+			}
+		}
+		scanner.close();
+		
+		return null;
+		} catch (FileNotFoundException e) {
+			return null;
+		} 
+	}
+	//Check file if user exists in file
+	private static User checkUserExistInFile(String userName) {
+		Scanner scanner = null;
+		try {
+			scanner = new Scanner(new File("users.txt"));
+		String currentLine;
+		
+		while(scanner.hasNextLine()) {
+			currentLine = scanner.nextLine();
+			if(currentLine.contains(userName)){
+				return getUser(userName);
+			}
+		}
+		
+		if(scanner !=null){
+			scanner.close();
+		}
+		} catch (FileNotFoundException e) {
+			return null;
+		} 
+		return null;
+		
+	}
+	public static void populate(){
+		File file = new File("users.txt");
+		if(!file.isFile()){
+			return;
+		}
+		Scanner fileScan = null;
+		try {
+			fileScan = new Scanner(file);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		fileScan.useDelimiter(FILE_DELIMETER);
+		String userName = "";
+		String firstName = "";
+		String lastName = "";
+		int phoneNumber = -1;
+		String address = "";
+		while(fileScan.hasNextLine()){
+			
+			Scanner line = new Scanner(fileScan.nextLine());
+			line.useDelimiter(":|\n|".concat(FILE_DELIMETER));
+			while(line.hasNext()){
+				String userField = line.next();
+				String value = line.next();
+				if (userField.equals("UserName")) {
+//					userName = line.next();
+					userName = value;
+				} 
+				if (userField.equals("First Name")) {
+//					firstName = line.next();
+					firstName = value;
+				} 
+				if (userField.equals("Last Name")) {
+//					lastName = line.next();
+					lastName = value;
+				} 
+				if (userField.equals("id")) {
+				} 
+				if (userField.equals("Phone Number")) {
+//					phoneNumber = line.nextInt();
+					phoneNumber = Integer.parseInt(value);
+				} 
+				if (userField.equals("Address")) {
+//					address = line.next();
+					address = value;
+				}
+			}
+			//line.close();
+		}
+			if(getUser(userName) == null){
+				users.add(new User(userName,firstName,lastName,String.valueOf(phoneNumber),address));			
+			}
+	}
 }
