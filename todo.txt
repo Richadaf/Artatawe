@@ -1,2 +1,3 @@
 User should store Date created in it, instead of being in the data class (check Data CRC card)
+Check format of users.txt profiles for toString format.
 
