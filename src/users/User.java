@@ -79,12 +79,8 @@ public class User {
      * get a list of the user's favorite users
      * @return a list of the user's favorite users.
      */
-    public String getFavoriteUsers() {
-        String list = "";
-        for(int i = 0; i < favoriteUsers.size(); i++) {
-            list = list + favoriteUsers.get(i).getUserName();
-        }
-        return list;
+    public ArrayList<User> getFavoriteUsers() {
+        return favoriteUsers;
     }
     /**
      * Get the user's Address
@@ -101,8 +97,12 @@ public class User {
     public String getAvatar(){
         return avatar;
     }
+    /**
+     * Returns an list of user bids as bid objects
+     * @return The arrayList of bid objects that this user has bid on.
+     */
     
-    public Bid getBids(){
+    public ArrayList<Bid> getBids(){
         return biddingHistory.getUserBids();
     }
     /**
