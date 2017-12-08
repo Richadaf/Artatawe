@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DrawingController">
+   <children>
+      <ImageView fitHeight="118.0" fitWidth="168.0" layoutX="39.0" layoutY="76.0" onMouseClicked="#chosen1" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image fx:id="pic1" url="@CanvasImage1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="118.0" fitWidth="168.0" layoutX="241.0" layoutY="76.0" onMouseClicked="#chosen2" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image fx:id="pic2" url="@CanvasImage2.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="118.0" fitWidth="168.0" layoutX="443.0" layoutY="76.0" onMouseClicked="#chosen3" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image fx:id="pic3" url="@CanvasImage3.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="118.0" fitWidth="168.0" layoutX="39.0" layoutY="206.0" onMouseClicked="#chosen4" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image fx:id="pic4" url="@CanvasImage4.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="118.0" fitWidth="168.0" layoutX="241.0" layoutY="206.0" onMouseClicked="#chosen5" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image fx:id="pic5" url="@CanvasImage5.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="118.0" fitWidth="168.0" layoutX="443.0" layoutY="206.0" onMouseClicked="#chosen6" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image fx:id="pic6" url="@CanvasImage6.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="199.0" text="Select An Avatar">
+         <font>
+            <Font name="Zapfino" size="19.0" />
+         </font>
+      </Label>
+      <Button layoutX="253.0" layoutY="345.0" mnemonicParsing="false" onAction="#saveImage" text="Save Choice" />
+   </children>
+</AnchorPane>

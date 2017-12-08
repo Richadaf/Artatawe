@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DrawingController">
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="TOP_CENTER" layoutX="1.0" layoutY="85.0" prefHeight="300.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <ColorPicker fx:id="colourPick" prefHeight="27.0" prefWidth="150.0">
+                     <value>
+                        <Color blue="0.1" green="0.505" red="0.1" />
+                     </value>
+                  </ColorPicker>
+                  <Slider fx:id="slider" minorTickCount="5" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="50.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </Slider>
+                  <ToggleButton mnemonicParsing="false" prefWidth="150.0" text="Curve" fx:id="curveBut">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="toggleG1" />
+                     </toggleGroup>
+                  </ToggleButton>
+                  <ToggleButton mnemonicParsing="false" prefWidth="150.0" text="Line" toggleGroup="$toggleG1" fx:id="lineBut" />
+                  <ToggleButton mnemonicParsing="false" prefWidth="150.0" text="Eraser" toggleGroup="$toggleG1" fx:id="eraserBut" />
+                  <Button fx:id="avatBut" mnemonicParsing="false" onAction="#toAvatarPane" prefWidth="150.0" text="Select Avatar" />
+                  <Button fx:id="saveBut" mnemonicParsing="false" onAction="#saveCanvas" prefWidth="150.0" text="Save Drawing" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </VBox>
+            <Label layoutX="37.0" layoutY="-19.0" text="Drawing">
+               <font>
+                  <Font name="Zapfino" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane fx:id="canPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Canvas fx:id="canvas" height="400.0" width="400.0" onMouseDragged="#drawShape" onMouseClicked="#drawShape" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

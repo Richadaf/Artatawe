@@ -32,7 +32,6 @@ public class Artwork {
      * @param reservePrive
      * @param currentPrice
      * @param bidsAllowed
-     * @param bidsLeft
      * @param timeEntered
      * @param height
      * @param width
