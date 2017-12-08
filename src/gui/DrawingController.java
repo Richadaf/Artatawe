@@ -160,14 +160,14 @@ public class DrawingController {
 
             try {
                 ImageIO.write(SwingFXUtils.fromFXImage(wim, null), "png", profilePic);
-                imageSaved();
                 //users.User.setImage("CanvasImage.png");
+                imageSaved();
             } catch (Exception e) {
                 System.out.print("Failed to save image: " + e);
             }
         } else {
-            imageSaved();
             //users.User.setImage(getImage());
+            imageSaved();
         }
 
     }
