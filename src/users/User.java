@@ -18,6 +18,7 @@ public class User {
     private String address;
     private String avatar;
     private ArrayList<User> favoriteUsers;
+    private BiddingHistory biddingHistory;
     /**
      * 
      * User Class constructor
@@ -28,7 +29,6 @@ public class User {
      * @param address  The user's Address
      */
     public User(String userName, String firstName, String lastName, String phoneNumber, String address ) {
-        this.favoriteUsers = new ArrayList<>();
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -36,6 +36,9 @@ public class User {
         this.address = address;
         userId = count.incrementAndGet(); 
         avatar = ""; // TODO: default avatar
+        this.favoriteUsers = new ArrayList<>();
+        this.biddingHistory = new BiddingHistory();
+        
     }
     /**
      * Get the user's userID
@@ -98,13 +101,9 @@ public class User {
     public String getAvatar(){
         return avatar;
     }
-    /**
-     * Add a user to the list of favorite users
-     * @param user The user to be added
-     */
     
-    public void addFavoriteUser(User user) {
-        favoriteUsers.add(user);
+    public Bid getBids(){
+        return biddingHistory.getUserBids();
     }
     /**
      * Change the user's avatar
@@ -113,6 +112,14 @@ public class User {
     
     public void setAvatar(String avatar) {
         avatar = this.avatar;
+    }
+     /**
+     * Add a user to the list of favorite users
+     * @param user The user to be added
+     */
+    
+    public void addFavoriteUser(User user) {
+        favoriteUsers.add(user);
     }
     
 }
