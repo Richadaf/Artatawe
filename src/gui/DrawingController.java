@@ -18,7 +18,8 @@ import javax.imageio.ImageIO;
 import java.io.File;
 
 /**
- * @author Sam Huxtable
+ * Responsible for drawing new profile pictures
+ * @author Sam Huxtable (875669)
  */
 public class DrawingController {
 
