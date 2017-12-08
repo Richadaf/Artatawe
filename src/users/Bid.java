@@ -1,3 +1,4 @@
+package users;
 /**
  * This class represents values of a Bid.
  * @author Corey Kopotsha

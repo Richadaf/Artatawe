@@ -1,3 +1,4 @@
+package users;
 // to-do delete artwork from browsing if won, how to get exact artwork thats on GUI,
 // make sure bid is a number and not alphabet (might be done in another class).
 /**
