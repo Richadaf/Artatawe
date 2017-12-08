@@ -17,9 +17,12 @@ import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import java.io.File;
 
-
+/**
+ * @author Sam Huxtable
+ */
 public class DrawingController {
 
+    //Variable Declarations
     @FXML
     private Slider slider;
     @FXML
@@ -46,32 +49,48 @@ public class DrawingController {
     private Image pic6;
 
     private AvatarSelected chosenAvatar;
-    File profilePic;
-    Boolean start = true;
-    double startX;
-    double startY;
-    double endX;
-    double endY;
+    private File profilePic;
+    private Boolean start = true;
+    private double startX;
+    private double startY;
+    private double endX;
+    private double endY;
 
+    /**
+     * Opens a pane to choose an avatar
+     * @throws Exception
+     */
     @FXML
     public void toAvatarPane() throws Exception{
         Stage secondStage = new Stage();
-        Parent avatarPane = FXMLLoader.load(getClass().getResource("gui/Avatar.fxml"));
+        Parent avatarPane = FXMLLoader.load(getClass().getResource("Avatar.fxml"));
         secondStage.setTitle("Select An Avatar");
         secondStage.setScene(new Scene(avatarPane, 600, 400));
         secondStage.show();
     }
 
+    /**
+     * Gets thickness from the slider
+     * @return The sliders value
+     */
     @FXML
     public double getStrokeWidth() {
         return slider.getValue();
     }
 
+    /**
+     * Gets colour from the Color Picker
+     * @return Colour
+     */
     @FXML
     public Color getColor() {
         return colourPick.getValue();
     }
 
+    /**
+     * Takes a Mouse Event and uses it to draw a line, Curve or For an eraser.
+     * @param e
+     */
     @FXML
     public void drawShape(MouseEvent e) {
         GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -103,22 +122,33 @@ public class DrawingController {
         }
     }
 
+    /**
+     * Saves a canvas after making sure there is no avatar selected
+     */
     public void saveCanvas() {
         chosenAvatar = null;
         saveImage();
     }
 
+    /**
+     * Opens a pop up saying the image has been saved
+     * @throws Exception
+     */
     public void imageSaved() {
         try {
             Stage popUp = new Stage();
-            Parent popUpPane = FXMLLoader.load(getClass().getResource("gui/popUp.fxml"));
+            Parent popUpPane = FXMLLoader.load(getClass().getResource("popUp.fxml"));
             popUp.setTitle("Image Saved");
             popUp.setScene(new Scene(popUpPane, 600, 400));
             popUp.show();
-        } catch(Exception e) {
+        } catch (Exception e) {
+            System.out.print("Failed to save image: " + e);
         }
     }
 
+    /**
+     * Saves canvas to an image or saves avatar
+     */
     @FXML
     public void saveImage() {
         if(chosenAvatar == null) {
@@ -130,36 +160,63 @@ public class DrawingController {
             try {
                 ImageIO.write(SwingFXUtils.fromFXImage(wim, null), "png", profilePic);
                 imageSaved();
-                //User.setImage("CanvasImage.png");
+                //users.User.setImage("CanvasImage.png");
             } catch (Exception e) {
                 System.out.print("Failed to save image: " + e);
             }
         } else {
             imageSaved();
-            //User.setImage(getImage());
+            //users.User.setImage(getImage());
         }
 
     }
 
+    /**
+     * Sets the selected avatar to picture 1
+     */
     public void chosen1() {
         chosenAvatar = AvatarSelected.AVATAR_1;
     }
+
+    /**
+     * Sets the selected avatar to picture 2
+     */
     public void chosen2() {
         chosenAvatar = AvatarSelected.AVATAR_2;
     }
+
+    /**
+     * Sets the selected avatar to picture 3
+     */
     public void chosen3() {
         chosenAvatar = AvatarSelected.AVATAR_3;
     }
+
+    /**
+     * Sets the selected avatar to picture 4
+     */
     public void chosen4() {
         chosenAvatar = AvatarSelected.AVATAR_4;
     }
+
+    /**
+     * Sets the selected avatar to picture 5
+     */
     public void chosen5() {
         chosenAvatar = AvatarSelected.AVATAR_5;
     }
+
+    /**
+     * Sets the selected avatar to picture 6
+     */
     public void chosen6() {
         chosenAvatar = AvatarSelected.AVATAR_6;
     }
 
+    /**
+     * Gets the avatar URL
+     * @return Image URL
+     */
     public String getImage() {
         switch (chosenAvatar) {
             case AVATAR_1:
@@ -181,7 +238,7 @@ public class DrawingController {
                 return pic6.getUrl();
 
             default:
-                return "No avatar chosen";
+                return "";
         }
     }
 }
