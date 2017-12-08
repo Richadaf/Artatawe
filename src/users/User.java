@@ -1,18 +1,23 @@
 package users;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
+
 
 /**
  * This Class stores information about a user.
  * @author 869298
  */
 public class User {
+    private static final AtomicInteger count = new AtomicInteger(0); 
     // Josh: Could these be constants?
+    private int userId;
     private String userName;
     private String firstName;
     private String lastName;
     private String phoneNumber;
     private String address;
     private String avatar;
+    private ArrayList<User> favoriteUsers;
     /**
      * 
      * User Class constructor
@@ -23,13 +28,21 @@ public class User {
      * @param address  The user's Address
      */
     public User(String userName, String firstName, String lastName, String phoneNumber, String address ) {
+        this.favoriteUsers = new ArrayList<>();
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.address = address;
-        ArrayList<User> favoriteUsers = new ArrayList<>();
+        userId = count.incrementAndGet(); 
         avatar = ""; // TODO: default avatar
+    }
+    /**
+     * Get the user's userID
+     * @return The userID
+     */
+    public int getUserId() {
+        return userId;
     }
     /**
      *  Get this user's username
