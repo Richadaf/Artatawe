@@ -1,4 +1,4 @@
-
+package gui;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -32,14 +32,14 @@ public class BiddingHistoryGUI extends Application {
     VBox root3;
     
     private TableView table = new TableView();
-    private final ObservableList<Bid> data = FXCollections.observableArrayList(
-    	    new Bid(20.0, 10, 3, "Sam", "Corey", "Mona Lisa", "19:20 06/12/17"),
-    	    new Bid(20.0, 10, 3, "Sam", "Corey", "Mona Lisa", "19:20 06/12/17"),
-    	    new Bid(20.0, 10, 3, "Sam", "Corey", "Mona Lisa", "19:20 06/12/17"),
-    	    new Bid(20.0, 10, 3, "Sam", "Corey", "Mona Lisa", "19:20 06/12/17"),
-    	    new Bid(20.0, 10, 3, "Sam", "Corey", "Mona Lisa", "19:20 06/12/17"),
-    	    new Bid(20.0, 10, 3, "Sam", "Corey", "Mona Lisa", "19:20 06/12/17"),
-    	    new Bid(20.0, 10, 3, "Sam", "Corey", "Mona Lisa", "19:20 06/12/17")
+    private final ObservableList<users.Bid> data = FXCollections.observableArrayList(
+    	    new users.Bid(20.0, 10, 3, "Sam", "Corey", "Mona Lisa", "19:20 06/12/17"),
+    	    new users.Bid(20.0, 10, 3, "Sam", "Corey", "Mona Lisa", "19:20 06/12/17"),
+    	    new users.Bid(20.0, 10, 3, "Sam", "Corey", "Mona Lisa", "19:20 06/12/17"),
+    	    new users.Bid(20.0, 10, 3, "Sam", "Corey", "Mona Lisa", "19:20 06/12/17"),
+    	    new users.Bid(20.0, 10, 3, "Sam", "Corey", "Mona Lisa", "19:20 06/12/17"),
+    	    new users.Bid(20.0, 10, 3, "Sam", "Corey", "Mona Lisa", "19:20 06/12/17"),
+    	    new users.Bid(20.0, 10, 3, "Sam", "Corey", "Mona Lisa", "19:20 06/12/17")
     	);
 
     @Override
@@ -61,23 +61,23 @@ public class BiddingHistoryGUI extends Application {
         
         TableColumn artworkNameCol = new TableColumn("Artwork Name");
         artworkNameCol.setCellValueFactory(
-                new PropertyValueFactory<Bid, String>("artworkName"));
+                new PropertyValueFactory<users.Bid, String>("artworkName"));
         
         TableColumn sellerNameCol = new TableColumn("Seller Name");
         sellerNameCol.setCellValueFactory(
-                new PropertyValueFactory<Bid, String>("sellerName"));
+                new PropertyValueFactory<users.Bid, String>("sellerName"));
         
         TableColumn yourBidCol = new TableColumn("Your Bid");
         yourBidCol.setCellValueFactory(
-                new PropertyValueFactory<Bid, String>("newBid"));
+                new PropertyValueFactory<users.Bid, String>("newBid"));
         
         TableColumn wonBid = new TableColumn("Won Bid");
         wonBid.setCellValueFactory(
-                new PropertyValueFactory<Bid, String>("wonBid"));
+                new PropertyValueFactory<users.Bid, String>("wonBid"));
         
         TableColumn bidTime = new TableColumn("Bid Time");
         bidTime.setCellValueFactory(
-                new PropertyValueFactory<Bid, String>("bidTime"));
+                new PropertyValueFactory<users.Bid, String>("bidTime"));
         
         table.getColumns().addAll(artworkNameCol, sellerNameCol, yourBidCol, wonBid,bidTime);
         table.setItems(data);
