@@ -13,7 +13,7 @@ public class PlaceBid {
 	private Bid bidObject;
 	private Artwork artworkObject;
 	private User userObject;
-	private Time timeObject;
+	private data.Time timeObject;
 	private BiddingHistory bidHistoryObject;
 	
 	/**
@@ -38,7 +38,7 @@ public class PlaceBid {
 	public Bid createBid(double newBid) {
 		return new Bid(newBid, artworkObject.getCurrentPrice(), artworkObject.getBidsLeft(),
 				userObject.getUserName(), artworkObject.getSeller(), artworkObject.getTitle(),
-				timeObject.getTime());
+				timeObject.getDateTime());
 	}
 	/**
 	 * Checks whether the bid the user has placed is valid.
