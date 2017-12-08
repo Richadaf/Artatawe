@@ -28,9 +28,9 @@ public class User {
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.address = address;
+        ArrayList<User> favoriteUsers = new ArrayList<>();
         avatar = ""; // TODO: default avatar
     }
-    ArrayList<User> favoriteUsers = new ArrayList<>();
     /**
      *  Get this user's username
      * @return The username
