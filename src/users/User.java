@@ -1,7 +1,5 @@
-/*
- *
- */
 package users;
+import java.util.ArrayList;
 
 /**
  * This Class stores information about a user.
@@ -14,6 +12,7 @@ public class User {
     private String lastName;
     private String phoneNumber;
     private String address;
+    private String avatar;
     /**
      * 
      * User Class constructor
@@ -29,7 +28,9 @@ public class User {
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.address = address;
+        avatar = ""; // TODO: default avatar
     }
+    ArrayList<User> favoriteUsers = new ArrayList<>();
     /**
      *  Get this user's username
      * @return The username
@@ -59,10 +60,46 @@ public class User {
         return phoneNumber;
     }
     /**
-     * Get this user's Address
+     * get a list of the user's favorite users
+     * @return a list of the user's favorite users.
+     */
+    public String getFavoriteUsers() {
+        String list = "";
+        for(int i = 0; i < favoriteUsers.size(); i++) {
+            list = list + favoriteUsers.get(i).getUserName();
+        }
+        return list;
+    }
+    /**
+     * Get the user's Address
      * @return The user's Address
      */
     public String getAddress() {
         return address;
     }
+    /**
+     * Get the user's Avatar
+     * @return The user's Avatar
+     */
+    
+    public String getAvatar(){
+        return avatar;
+    }
+    /**
+     * Add a user to the list of favorite users
+     * @param user The user to be added
+     */
+    
+    public void addFavoriteUser(User user) {
+        favoriteUsers.add(user);
+    }
+    /**
+     * Change the user's avatar
+     * @param avatar the URL of the user's avatar
+     */
+    
+    public void setAvatar(String avatar) {
+        avatar = this.avatar;
+    }
+    
 }
