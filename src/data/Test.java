@@ -12,21 +12,19 @@ import users.User;
  */
 public class Test {
         public static void main(String[] args) {
-            //Populate users.txt
-            
+            //Populate users.txt            
             Data.populate();
             users.User admin = new users.User("admin", "John", "Smith", "123", "Swansea");
-            Data.saveUser(admin);
-            userToString(admin);
-        }
-                //for testing
-        public static void userToString(User user){
-                System.out.print("User: " + user.getUserName());
-                System.out.print("Name: " + user.getFirstName() + user.getLastName());
-                System.out.print("Number: " + user.getPhoneNumber());
-                System.out.print("Address: " + user.getAddress());
-
-        }
+            Data.saveUser(admin);     
             
+            //Read users.txt
+            if (Data.getUser(admin) == null) {
+                System.err.println("USER NOT FOUND");
+            }
+            Data.userToTxt(Data.getUser(admin));
+            
+            
+        }
+                    
             //Find user data from users.txt
 }

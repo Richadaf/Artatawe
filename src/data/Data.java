@@ -42,6 +42,8 @@ public class Data {
      * @return {@code true} if file was successfully saved to file;
      * {@code false} otherwise.
      */
+    private static User mUser;
+
     public static boolean saveUser(User mUser) {
         File file = new File("users.txt");
         BufferedWriter writer = null;
@@ -57,24 +59,25 @@ public class Data {
                 Data.reset();
                 writer = new BufferedWriter(new FileWriter(file));
                 for (User u : getAllUsers()) {
-                    writer.write(u.toString());
+                    writer.write(userToTxt(u));
                     writer.write("\n");
                     writer.write(FILE_DELIMETER);
                     writer.write("\n");
                 }
             }
+            
+            //User foundProfile = null;
+            //foundProfile = checkUserExistInFile(mUser.getUserName());
 
-            User foundProfile = null;
-            foundProfile = checkUserExistInFile(mUser.getUserName());
-
-            if (foundProfile == null) {
+            if (checkUserExistInFile(mUser.getUserName()) == null) {
                 users.add(mUser);
                 writer = new BufferedWriter(new FileWriter(file, true));
-                writer.write(mUser.toString());
+                writer.write(userToTxt(mUser));
                 writer.write("\n");
                 writer.write(FILE_DELIMETER);
                 writer.write("\n");
             }
+             
             if (writer != null) {
                 writer.close();
             }
@@ -83,6 +86,16 @@ public class Data {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public static String userToTxt(User u) {
+        String txtProfile = "";
+        txtProfile += u.getUserName() + " ";
+        txtProfile += u.getFirstName()+ " ";
+        txtProfile += u.getLastName()+ " ";
+        txtProfile += u.getPhoneNumber()+ " ";
+        txtProfile += u.getAddress()+ " ";                        
+        return txtProfile;
     }
 
     //Resets all files
@@ -119,7 +132,7 @@ public class Data {
         return null;
     }
 
-	//+GET_USER_ID(file: UserFile): int
+    //+GET_USER_ID(file: UserFile): int
     //Should be in User\
     //+ART_INORDER():Artworks[]   should be in artwork tree 
     //Check file if user exists in file
@@ -146,59 +159,64 @@ public class Data {
         }
         return null;
 
-    }
-
+    } 
+    
+    private Scanner x;
+    
     public static void populate() {
+
         File file = new File("users.txt");
         if (!file.isFile()) {
             return;
         }
+        
         Scanner fileScan = null;
+        
         try {
             fileScan = new Scanner(file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        
         fileScan.useDelimiter(FILE_DELIMETER);
         String userName = "";
         String firstName = "";
         String lastName = "";
-        int phoneNumber = -1;
+        String phoneNumber = "";
         String address = "";
+        
         while (fileScan.hasNextLine()) {
 
             Scanner line = new Scanner(fileScan.nextLine());
             line.useDelimiter(":|\n|".concat(FILE_DELIMETER));
+            
             while (line.hasNext()) {
                 String userField = line.next();
-                String value = line.next();
+//                String value = line.next();
                 if (userField.equals("UserName")) {
-//					userName = line.next();
-                    userName = value;
+                    userName = line.next();
+//                    userName = value;
                 }
                 if (userField.equals("First Name")) {
-//					firstName = line.next();
-                    firstName = value;
+                    firstName = line.next();
+//                    firstName = value;
                 }
                 if (userField.equals("Last Name")) {
-//					lastName = line.next();
-                    lastName = value;
-                }
-                if (userField.equals("id")) {
+                    lastName = line.next();
+//                    lastName = value;
                 }
                 if (userField.equals("Phone Number")) {
-//					phoneNumber = line.nextInt();
-                    phoneNumber = Integer.parseInt(value);
+                    phoneNumber = line.next();
                 }
                 if (userField.equals("Address")) {
-//					address = line.next();
-                    address = value;
+                    address = line.next();
+//                    address = value;
                 }
             }
             //line.close();
         }
-        if (getUser(userName) == null) {
+        if (getUser(mUser) == null) {
             users.add(new User(userName, firstName, lastName, String.valueOf(phoneNumber), address));
-        }
+        }    
     }
 }
