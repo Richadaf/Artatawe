@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LoginController">
+<VBox xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SystemController">
    <children>
       <AnchorPane prefHeight="405.0" prefWidth="508.0">
          <children>
@@ -24,7 +24,7 @@
             <Label layoutX="116.0" layoutY="192.0" text="Login:" />
             <TextField fx:id="txtLogin" layoutX="201.0" layoutY="187.0" promptText="User ID" />
             <Button fx:id="btnEnter" layoutX="285.0" layoutY="239.0" mnemonicParsing="false" onAction="#onEnterButtonClicked" prefHeight="27.0" prefWidth="79.0" text="Enter" />
-            <Label fx:id="lblResponse" layoutX="116.0" layoutY="277.0" prefHeight="17.0" prefWidth="250.0" text="Label" textFill="RED" visible="false" wrapText="true" />
+            <Label fx:id="lblLoginResponse" layoutX="116.0" layoutY="277.0" prefHeight="17.0" prefWidth="250.0" text="Label" textFill="RED" visible="false" wrapText="true" />
             <Label fx:id="lblSignUp" layoutX="110.0" layoutY="303.0" onMouseClicked="#signUp" text="No account? Click here to create " underline="true">
                <font>
                   <Font name="System Font" size="13.0" />
