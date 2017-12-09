@@ -2,6 +2,8 @@ package gui;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
@@ -51,8 +53,8 @@ public class BiddingHistoryGUI extends Application {
         root3 = new VBox();
         
         //setup buttons
-        Button backToProfile = new Button("Back To Profile ");
-        backToProfile.setPadding(new Insets(10,10,10,10));
+        Button btnProfile = new Button("Back To Profile ");
+        btnProfile.setPadding(new Insets(10,10,10,10));
         
         
         
@@ -79,7 +81,11 @@ public class BiddingHistoryGUI extends Application {
         bidTime.setCellValueFactory(
                 new PropertyValueFactory<users.Bid, String>("bidTime"));
         
-        table.getColumns().addAll(artworkNameCol, sellerNameCol, yourBidCol, wonBid,bidTime);
+        TableColumn compAuction = new TableColumn("Completed Auction");
+        bidTime.setCellValueFactory(
+                new PropertyValueFactory<users.Bid, String>("compAuction"));
+        
+        table.getColumns().addAll(artworkNameCol, sellerNameCol, yourBidCol, wonBid,bidTime,compAuction);
         table.setItems(data);
         table.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
         
@@ -87,20 +93,25 @@ public class BiddingHistoryGUI extends Application {
         //add everything to vbox
         root2.setPadding(new Insets(400,750,20,50));
         root2.setSpacing(15);
-        root2.getChildren().addAll(backToProfile);
+        root2.getChildren().addAll(btnProfile);
         root3.setPadding(new Insets(50,100,150,-800));
         root3.getChildren().addAll(table); 
         
         border.setLeft(root2);
         border.setCenter(root3);
-
-        //setup background picture;
-
-
-        //data for artworks
         
-
-        //set the button event
+     // Handle a button event
+        btnProfile.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+            	Browsing b = new Browsing();
+            	try {
+					b.start(primaryStage);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+            }
+        });
 
 
         Scene showArt = new Scene(border, 900, 500);
