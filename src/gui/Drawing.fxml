@@ -18,7 +18,7 @@
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="TOP_CENTER" layoutX="1.0" layoutY="85.0" prefHeight="300.0" prefWidth="200.0" spacing="10.0">
+            <VBox alignment="TOP_CENTER" layoutX="1.0" layoutY="95.0" prefHeight="306.0" prefWidth="200.0" spacing="10.0">
                <children>
                   <ColorPicker fx:id="colourPick" prefHeight="27.0" prefWidth="150.0">
                      <value>
@@ -33,13 +33,13 @@
                         <Insets left="10.0" right="10.0" />
                      </VBox.margin>
                   </Slider>
-                  <ToggleButton mnemonicParsing="false" prefWidth="150.0" text="Curve" fx:id="curveBut">
+                  <ToggleButton fx:id="curveBut" mnemonicParsing="false" prefWidth="150.0" text="Curve">
                      <toggleGroup>
                         <ToggleGroup fx:id="toggleG1" />
                      </toggleGroup>
                   </ToggleButton>
-                  <ToggleButton mnemonicParsing="false" prefWidth="150.0" text="Line" toggleGroup="$toggleG1" fx:id="lineBut" />
-                  <ToggleButton mnemonicParsing="false" prefWidth="150.0" text="Eraser" toggleGroup="$toggleG1" fx:id="eraserBut" />
+                  <ToggleButton fx:id="lineBut" mnemonicParsing="false" prefWidth="150.0" text="Line" toggleGroup="$toggleG1" />
+                  <ToggleButton fx:id="eraserBut" mnemonicParsing="false" prefWidth="150.0" text="Eraser" toggleGroup="$toggleG1" />
                   <Button fx:id="avatBut" mnemonicParsing="false" onAction="#toAvatarPane" prefWidth="150.0" text="Select Avatar" />
                   <Button fx:id="saveBut" mnemonicParsing="false" onAction="#saveCanvas" prefWidth="150.0" text="Save Drawing" />
                </children>
@@ -50,9 +50,9 @@
                   <Insets top="20.0" />
                </padding>
             </VBox>
-            <Label layoutX="37.0" layoutY="-19.0" text="Drawing">
+            <Label layoutX="36.0" layoutY="7.0" prefHeight="95.0" prefWidth="131.0" text="Drawing">
                <font>
-                  <Font name="Zapfino" size="24.0" />
+                  <Font name="Zapfino" size="22.0" />
                </font>
             </Label>
          </children>
@@ -61,7 +61,7 @@
    <center>
       <AnchorPane fx:id="canPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Canvas fx:id="canvas" height="400.0" width="400.0" onMouseDragged="#drawShape" onMouseClicked="#drawShape" />
+            <Canvas fx:id="canvas" height="400.0" onMouseClicked="#drawShape" onMouseDragged="#drawShape" width="400.0" />
          </children>
       </AnchorPane>
    </center>
