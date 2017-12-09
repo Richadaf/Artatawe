@@ -19,7 +19,7 @@ import java.util.Arrays;
 import java.util.stream.Stream;
 
 
-public class Main extends Application {
+public class Browsing extends Application {
 
     FlowPane root;
     BorderPane border;
