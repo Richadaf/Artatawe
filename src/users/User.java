@@ -5,12 +5,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * This Class stores information about a user.
- * @author 869298
+ * @author 869298 & 863266
  */
 public class User {
     private static final AtomicInteger count = new AtomicInteger(0); 
     // Josh: Could these be constants?
-    private int userId;
+//    private int userId;
     private String userName;
     private String firstName;
     private String lastName;
@@ -34,8 +34,8 @@ public class User {
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.address = address;
-        userId = count.incrementAndGet(); 
-        avatar = ""; // TODO: default avatar
+//        userId = count.incrementAndGet(); 
+        avatar = "";//images/User_Avatar.png"; // TODO: default avatar
         this.favoriteUsers = new ArrayList<>();
         this.biddingHistory = new BiddingHistory();
         
@@ -44,9 +44,9 @@ public class User {
      * Get the user's userID
      * @return The userID
      */
-    public int getUserId() {
-        return userId;
-    }
+//    public int getUserId() {
+//        return userId;
+//    }
     /**
      *  Get this user's username
      * @return The username
@@ -121,5 +121,5 @@ public class User {
     public void addFavoriteUser(User user) {
         favoriteUsers.add(user);
     }
-    
+
 }

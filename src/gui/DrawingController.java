@@ -155,19 +155,18 @@ public class DrawingController {
         if(chosenAvatar == null) {
             WritableImage wim = new WritableImage(400, 400);
             canvas.snapshot(null, wim);
-            String imageName = Main.getCurrentUser.getusername() + ".png";
-            profilePic = new File(imageName);
+            profilePic = new File("CanvasImage.png");
 
 
             try {
                 ImageIO.write(SwingFXUtils.fromFXImage(wim, null), "png", profilePic);
-                Main.getCurrentUser.setAvatar(imageName);
+                //SystemController.getcurUser.setAvatar("CanvasImage.png");
                 imageSaved();
             } catch (Exception e) {
                 System.out.print("Failed to save image: " + e);
             }
         } else {
-            Main.getCurrentUser.setAvatar(getImage());
+            //SystemController.getcurUser.setAvatar(getImage());
             imageSaved();
         }
     }
