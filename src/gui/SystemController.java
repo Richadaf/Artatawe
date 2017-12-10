@@ -10,10 +10,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.SplitPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -33,7 +30,7 @@ public class SystemController extends Application {
     private static Scene loginScene;
     private static Scene signUpScene;
     private static Scene Browsing;
-
+    //Login Variables
     @FXML
     private TextField txtLogin;
 
@@ -43,7 +40,7 @@ public class SystemController extends Application {
     @FXML
     private Label lblLoginResponse;
 
-
+    //Sign up Variables
     @FXML
     Label lblResponse;
 
@@ -67,7 +64,31 @@ public class SystemController extends Application {
 
     @FXML
     ImageView imgProfile;
+    //User Profile Variables
 
+    @FXML
+     Label lblName;
+
+    @FXML
+    private Label lblUsername;
+
+    @FXML
+    private Label lblPhone;
+
+    @FXML
+    private Button btnEditProfile;
+
+    @FXML
+    private ImageView imgUser;
+
+    @FXML
+    private Hyperlink lnkEditProfileImage;
+
+    @FXML
+    private Hyperlink lnkBiddingHistory;
+
+    @FXML
+    private Label lblAddress;
 
     public static void main(String[] args) {
         Data.populate();
@@ -109,11 +130,16 @@ public class SystemController extends Application {
                 Scene userProfileScene = new Scene(userProfileParent);
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.setTitle("User Profile - Artatawe");
+
+
+
+
                 window.setScene(userProfileScene);
                 window.show();
             }
         }
     }
+
 
     @FXML
     public void signUp() throws IOException {
@@ -181,10 +207,11 @@ public class SystemController extends Application {
                 : txtAddress1.getText().concat(",").concat(txtAddress2.getText());
 
         User mUser = new User(txtUserName.getText(),txtFirstName.getText(), txtLastName.getText(), String.valueOf(phoneNumber),address);
+        //Data.saveUser(mUser);
         user = mUser;
-        chooseImg();
         window.setScene(loginScene);
         window.show();
+        chooseImg();
         // lblResponse.setText("Account Created, Login with username");
         //lblResponse.setVisible(true);
 

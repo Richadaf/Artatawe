@@ -112,7 +112,7 @@ public class User {
      */
     
     public void setAvatar(String avatar) {
-        avatar = this.avatar;
+         this.avatar = avatar;
     }
      /**
      * Add a user to the list of favorite users
@@ -122,16 +122,10 @@ public class User {
     public void addFavoriteUser(User user) {
         favoriteUsers.add(user);
     }
-    
-    //for testing
-        @Override
+
+    @Override
     public String toString(){
-        String profileData = "";
-        profileData += "UserName: " + userName + "\n";
-        profileData += "Name: " + firstName + " " + lastName + "\n";
-        profileData += "Phone: " + phoneNumber + "\n";        
-        profileData += "Address: " + address + "\n";
-        return profileData;
+        return "UserName:-" + userName + "\n" + "First Name:-" + firstName + "\n"  + "Last Name:-" + lastName + "\n" + "Phone Number:-" + phoneNumber + "\n" + "Address:-" + address + "\n" + "Image:-" + avatar;
     }
- 
 }
+

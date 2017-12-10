@@ -1,3 +1,4 @@
+
 package data;
 
 import static data.FileReader.readFile;
@@ -13,6 +14,7 @@ import users.Artwork;
 import users.User;
 
 /**
+<<<<<<< HEAD
  * The Data class is responsible for saving information about all users, artwork
  * and other related information to file
  *
@@ -294,22 +296,16 @@ public class Data {
                 return u;
             }
         }
-        /*//User isnt found in arrayList, so check file name
-		User checkedUser = checkUserExistInFile(username);
-		if(checkedUser != null){
-			users.add(checkedUser);
-			return checkedUser;
-		}*/
         return null;
     }
 
-    public static Artwork getArtwork(String title) {
-        for (Artwork a : artworks) {
-            if (a.getTitle().equalsIgnoreCase(title)) {
-                return a;
-            }
-        }
-        /*//User isnt found in arrayList, so check file name
+	public static Artwork getArtwork(String title){
+		for(Artwork a: artworks){
+			if(a.getTitle().equalsIgnoreCase(title)){
+				return a;
+			}
+		}
+		/*//User isnt found in arrayList, so check file name
 		User checkedUser = checkUserExistInFile(username);
 		if(checkedUser != null){
 			users.add(checkedUser);
@@ -340,5 +336,5 @@ public class Data {
         return null;
 
     }
-
 }
+

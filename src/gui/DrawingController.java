@@ -1,5 +1,6 @@
 package gui;
 
+import data.Data;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -142,6 +143,7 @@ public class DrawingController {
             popUp.setTitle("Image Saved");
             popUp.setScene(new Scene(popUpPane, 600, 400));
             popUp.show();
+            Data.saveUser(SystemController.user);
         } catch (Exception e) {
             System.out.print("Failed to save image: " + e);
         }
@@ -155,7 +157,7 @@ public class DrawingController {
         if(chosenAvatar == null) {
             WritableImage wim = new WritableImage(400, 400);
             canvas.snapshot(null, wim);
-            String imageName = SystemController.user.getUserName() + ".png";
+            String imageName =  SystemController.user.getUserName() + ".png";
             profilePic = new File(imageName);
 
 
