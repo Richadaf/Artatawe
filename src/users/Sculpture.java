@@ -1,5 +1,7 @@
 package users;
 
+import java.util.ArrayList;
+
 /**
  * @author Sam Huxtable
  */
@@ -8,7 +10,7 @@ public class Sculpture extends Artwork {
 
     private double depth;
     private String material;
-    private String[] adPhotos;
+    private ArrayList<String> adPhotos = new ArrayList();
 
     /**
      * Constructs and instance of sculpture
@@ -29,7 +31,7 @@ public class Sculpture extends Artwork {
      * @param adPhotos
      */
     public Sculpture(String seller, String title, String description, String photo, String nameOfCreator, int yearMade, double reservePrive, double currentPrice,
-                     int bidsAllowed, String timeEntered, double height, double width, double depth, String material, String[] adPhotos) {
+                     int bidsAllowed, String timeEntered, double height, double width, double depth, String material, ArrayList adPhotos) {
         super(seller, title, description, photo, nameOfCreator, yearMade, reservePrive, currentPrice, bidsAllowed, timeEntered, height, width);
         this.depth = depth;
         this.material = material;
@@ -56,8 +58,25 @@ public class Sculpture extends Artwork {
      * Gets additional photos
      * @return aadPhotos
      */
-    public String[] getAdPhotos() {
+    public ArrayList<String> getAdPhotos() {
         return adPhotos;
+    }
+
+    /**
+     * Overrides toString()
+     * @return Artwork as a string
+     */
+    @Override
+    public String toString() {
+        String photos = "";
+        for(int i = 0; i < adPhotos.size(); i ++) {
+            photos = photos + "Photo:-" + adPhotos.get(i) + "\n";
+        }
+        return super.toString() + "\n" +
+                "Depth:-"+ depth + "\n" +
+                "Material:-"+ material + "\n" +
+                photos;
+
     }
 
 }
