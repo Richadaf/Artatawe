@@ -1,7 +1,5 @@
 package users;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.concurrent.atomic.AtomicInteger;
 
 
 /**
@@ -9,9 +7,6 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author 869298 & 863266
  */
 public class User {
-    private static final AtomicInteger count = new AtomicInteger(0); 
-    // Josh: Could these be constants?
-//    private int userId;
     private String userName;
     private String firstName;
     private String lastName;
@@ -122,7 +117,10 @@ public class User {
     public void addFavoriteUser(User user) {
         favoriteUsers.add(user);
     }
-
+    /** 
+     * To String method
+     * @return This Object as a String
+     */
     @Override
     public String toString(){
         return "UserName:-" + userName + "\n" + "First Name:-" + firstName + "\n"  + "Last Name:-" + lastName + "\n" + "Phone Number:-" + phoneNumber + "\n" + "Address:-" + address + "\n" + "Image:-" + avatar;
