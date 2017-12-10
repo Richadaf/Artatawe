@@ -50,7 +50,6 @@ public class Data {
         return artworks;
     }
 
-    //SAVE_USERFILE(file: UserFile): Boolean
     /**
      * Responsible for saving user to file
      *
@@ -58,8 +57,6 @@ public class Data {
      * @return {@code true} if file was successfully saved to file;
      * {@code false} otherwise.
      */
-    private static User mUser;
-
     public static boolean saveUser(User mUser) {
         File file = new File(FILE_NAME);
         BufferedWriter writer = null;
@@ -103,6 +100,12 @@ public class Data {
         return false;
     }
 
+    /**
+     * Responsible for saving user to file
+     *
+     * @param u user
+     * @return User information needed to be printed into the file
+     */
     public static String userToTxt(User u) {
         String txtProfile = "";
         txtProfile += u.getUserName() + "\t";
@@ -113,7 +116,6 @@ public class Data {
         return txtProfile;
     }
 
-    //Resets all files
     /**
      * Resets all files back to empty
      */
@@ -132,9 +134,9 @@ public class Data {
      * @param username user-defined username
      * @return User instance with matching username
      */
-    public static User getUser(User user) {
+    public static User getUser(User username) {
         for (User u : users) {
-            if (u.getUserName().equalsIgnoreCase(user.getUserName())) {
+            if (u.getUserName().equalsIgnoreCase(username.getUserName())) {
                 return u;
             }
         }
@@ -149,7 +151,7 @@ public class Data {
 
     //+GET_USER_ID(file: UserFile): int
     //Should be in User\
-    //+ART_INORDER():Artworks[]   should be in artwork tree 
+    //+ART_INORDER():Artworks[]   should be in artwork tree
     //Check file if user exists in file
     private static Boolean checkUserExistInFile(String userName) {
         Scanner scanner = null;
@@ -176,68 +178,13 @@ public class Data {
 
     }
 
-    private Scanner x;
-
-    public static void populate() {
-
-        File file = new File(FILE_NAME);
-        if (!file.isFile()) {
-            return;
-        }
-        readFile(FILE_NAME);
-//		Scanner fileScan = null;
-//		try {
-//			fileScan = new Scanner(file);
-//		} catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//		}
-//		fileScan.useDelimiter(FILE_DELIMETER);
-//		String userName = "";
-//		String firstName = "";
-//		String lastName = "";
-//		int phoneNumber = -1;
-//		String address = "";
-//		String avatar = "";
-//		while(fileScan.hasNextLine()){
-//			
-//			Scanner line = new Scanner(fileScan.nextLine());
-//			line.useDelimiter(":-|\n|".concat(FILE_DELIMETER));
-//			while(line.hasNext()){
-//				String userField = line.next();
-//				String value = line.next();
-//				if (userField.equals("UserName")) {
-////					userName = line.next();
-//					userName = value;
-//				} 
-//				if (userField.equals("First Name")) {
-////					firstName = line.next();
-//					firstName = value;
-//				} 
-//				if (userField.equals("Last Name")) {
-////					lastName = line.next();
-//					lastName = value;
-//				}
-//				if (userField.equals("Phone Number")) {
-////					phoneNumber = line.nextInt();
-//					phoneNumber = Integer.parseInt(value);
-//				} 
-//				if (userField.equals("Address")) {
-////					address = line.next();
-//					address = value;
-//				}
-//				if (userField.equals("Image")) {
-//					avatar = value;
-//				}
-//			}
-//			//line.close();
-
-//        if (getUser(userName) == null) {
-//            User u = new User(userName, firstName, lastName, phoneNumber, address);
-//            u.setAvatar(avatar);
-//            users.add(u);
-//        }
-    }       //Moved to File Reader ^^^^
-
+    /**
+     * Responsible for saving user to file
+     *
+     * @param art Artwork
+     * @return {@code true} if file was successfully saved to file;
+     * {@code false} otherwise.
+     */
     public static boolean saveArtwork(Artwork art) {
 
         File file = new File("artworks.txt");
@@ -337,4 +284,3 @@ public class Data {
 
     }
 }
-
