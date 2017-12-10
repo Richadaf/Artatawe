@@ -6,7 +6,6 @@ package users;
 
 public class Artwork {
 
-
     private String seller;
     private String title;
     private String description;
@@ -52,6 +51,7 @@ public class Artwork {
         this.timeEntered = timeEntered;
         this.height = height;
         this.width = width;
+
     }
 
     /**
