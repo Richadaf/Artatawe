@@ -25,6 +25,17 @@ public class Painting extends Artwork {
         super(seller, title, description, photo, nameOfCreator, yearMade, reservePrive, currentPrice, bidsAllowed, timeEntered, height, width);
     }
 
+    /**
+     * Overrides toString()
+     * @return Artwork as a string
+     */
+    @Override
+    public String toString() {
+
+        return super.toString();
+
+    }
+
 
 
 }
