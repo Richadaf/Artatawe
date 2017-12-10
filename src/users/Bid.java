@@ -13,19 +13,20 @@ public class Bid {
 	private String sellerName;
 	private String artworkName;
 	private boolean wonBid;
+
 	/**
 	 * Initialises a new Bid.
-	 * 
-	 * @param newBid The price the user is submitting as a new bid.
-	 * @param oldBid The last bid price that a previous user has set or the reserve price.
-	 * @param bidsLeft The amount of bids left on the Artwork after the bid has been placed.
-	 * @param bidderName The name of the user that is placing the bid.
-	 * @param sellerName The name of the user that is auctioning the Artwork.
+	 *
+	 * @param newBid      The price the user is submitting as a new bid.
+	 * @param oldBid      The last bid price that a previous user has set or the reserve price.
+	 * @param bidsLeft    The amount of bids left on the Artwork after the bid has been placed.
+	 * @param bidderName  The name of the user that is placing the bid.
+	 * @param sellerName  The name of the user that is auctioning the Artwork.
 	 * @param artworkName The name of the Artwork that the bid is being placed on.
-	 * @param bidTime The time the bid is being placed.
+	 * @param bidTime     The time the bid is being placed.
 	 */
 	public Bid(double newBid, double oldBid, int bidsLeft, String bidderName,
-			String sellerName, String artworkName, String bidTime) {
+			   String sellerName, String artworkName, String bidTime) {
 		this.setNewBid(newBid);
 		this.bidsLeft = bidsLeft;
 		this.setBidderName(bidderName);
@@ -34,23 +35,28 @@ public class Bid {
 		this.oldBid = oldBid;
 		this.setBidTime(bidTime);
 	}
-	
+
 	/**
 	 * Get the last bid price or reserve price that has been set.
+	 *
 	 * @return The last bid price or reserve price.
 	 */
 	public double getOldBid() {
 		return oldBid;
 	}
+
 	/**
 	 * Get the amount of bids that are left for the auction
+	 *
 	 * @return The amount of bids left for the auction.
 	 */
 	public int getBidsLeft() {
 		return bidsLeft;
 	}
+
 	/**
 	 * Get the amount of bids that are left for the auction
+	 *
 	 * @return The amount of bids left for the auction.
 	 */
 	public void setBidsLeft(int bidsLeft) {
@@ -104,8 +110,9 @@ public class Bid {
 	public void setWonBid(boolean wonBid) {
 		this.wonBid = wonBid;
 	}
-}
-	public String toString(){
-	return "New Bid:- " + newBid + "\nOld Bid:- " + oldBid + "\nBids Left:- " + "\nBidder Name:- " +
-			"\nSeller Name:- " + sellerName + "\nArtwork Name:- " + artworkName + "\nBid Time:- " + bidTime;
+
+	public String toString() {
+		return "New Bid:- " + newBid + "\nOld Bid:- " + oldBid + "\nBids Left:- " + "\nBidder Name:- " +
+				"\nSeller Name:- " + sellerName + "\nArtwork Name:- " + artworkName + "\nBid Time:- " + bidTime;
 	}
+}
