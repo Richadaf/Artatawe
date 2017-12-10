@@ -14,7 +14,6 @@ import users.Artwork;
 import users.User;
 
 /**
-<<<<<<< HEAD
  * The Data class is responsible for saving information about all users, artwork
  * and other related information to file
  *
