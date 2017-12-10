@@ -13,7 +13,7 @@ public class Artwork {
     private String photo;
     private String nameOfCreator;
     private int yearMade;
-    private double reservePrive;
+    private double reservePrice;
     private double currentPrice;
     private int bidsAllowed;
     private int bidsLeft;
@@ -29,14 +29,14 @@ public class Artwork {
      * @param photo
      * @param nameOfCreator
      * @param yearMade
-     * @param reservePrive
+     * @param reservePrice
      * @param currentPrice
      * @param bidsAllowed
      * @param timeEntered
      * @param height
      * @param width
      */
-    public Artwork(String seller, String title, String description, String photo, String nameOfCreator, int yearMade, double reservePrive,
+    public Artwork(String seller, String title, String description, String photo, String nameOfCreator, int yearMade, double reservePrice,
                    double currentPrice, int bidsAllowed, String timeEntered, double height, double width) {
         this.seller = seller;
         this.title = title;
@@ -44,7 +44,7 @@ public class Artwork {
         this.photo = photo;
         this.nameOfCreator = nameOfCreator;
         this.yearMade = yearMade;
-        this.reservePrive = reservePrive;
+        this.reservePrice = reservePrice;
         this.currentPrice = currentPrice;
         this.bidsAllowed = bidsAllowed;
         this.bidsLeft = bidsAllowed;
@@ -135,8 +135,8 @@ public class Artwork {
      * Gets the reserve price
      * @return reservePrice
      */
-    public double getReservePrive() {
-        return reservePrive;
+    public double getreservePrice() {
+        return reservePrice;
     }
 
     /**
@@ -185,5 +185,25 @@ public class Artwork {
      */
     public double getWidth() {
         return width;
+    }
+
+    /**
+     * Overrides toString()
+     * @return Artwork as a string
+     */
+    @Override
+    public String toString() {
+     return "Seller:-"+ seller + "\n" +
+             "Title:-"+ title + "\n" +
+             "Description:-"+ description + "\n" +
+             "Photo:-"+ photo + "\n" +
+             "Creator:-"+ nameOfCreator + "\n" +
+             "YearMade:-"+ yearMade + "\n" +
+             "reservePrice:-"+ reservePrice + "\n" +
+             "CurrentPrice:-"+ currentPrice + "\n" +
+             "BidsAllowed:-"+ bidsAllowed + "\n" +
+             "TimeEntered:-"+ timeEntered + "\n" +
+             "Height:-" + height + "\n" +
+             "Width:-" + width;
     }
 }

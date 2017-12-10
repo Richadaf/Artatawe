@@ -185,57 +185,57 @@ public class Data {
             return;
         }
         readFile(FILE_NAME);
-//		Scanner fileScan = null;
-//		try {
-//			fileScan = new Scanner(file);
-//		} catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//		}
-//		fileScan.useDelimiter(FILE_DELIMETER);
-//		String userName = "";
-//		String firstName = "";
-//		String lastName = "";
-//		int phoneNumber = -1;
-//		String address = "";
-//		String avatar = "";
-//		while(fileScan.hasNextLine()){
-//			
-//			Scanner line = new Scanner(fileScan.nextLine());
-//			line.useDelimiter(":-|\n|".concat(FILE_DELIMETER));
-//			while(line.hasNext()){
-//				String userField = line.next();
-//				String value = line.next();
-//				if (userField.equals("UserName")) {
-////					userName = line.next();
-//					userName = value;
-//				} 
-//				if (userField.equals("First Name")) {
-////					firstName = line.next();
-//					firstName = value;
-//				} 
-//				if (userField.equals("Last Name")) {
-////					lastName = line.next();
-//					lastName = value;
-//				}
-//				if (userField.equals("Phone Number")) {
-////					phoneNumber = line.nextInt();
-//					phoneNumber = Integer.parseInt(value);
-//				} 
-//				if (userField.equals("Address")) {
-////					address = line.next();
-//					address = value;
-//				}
-//				if (userField.equals("Image")) {
-//					avatar = value;
-//				}
-//			}
-//			//line.close();
+		Scanner fileScan = null;
+		try {
+			fileScan = new Scanner(file);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		fileScan.useDelimiter(FILE_DELIMETER);
+		String userName = "";
+		String firstName = "";
+		String lastName = "";
+		int phoneNumber = -1;
+		String address = "";
+		String avatar = "";
+		while(fileScan.hasNextLine()){
 
-//        if (getUser(userName) == null) {
-//            User u = new User(userName, firstName, lastName, phoneNumber, address);
-//            u.setAvatar(avatar);
-//            users.add(u);
-//        }
+            Scanner line = new Scanner(fileScan.nextLine());
+            line.useDelimiter(":-|\n|".concat(FILE_DELIMETER));
+    		while(line.hasNext()){
+    			String userField = line.next();
+    			String value = line.next();
+    			if (userField.equals("UserName")) {
+                    userName = line.next();
+					userName = value;
+				}
+				if (userField.equals("First Name")) {
+					firstName = line.next();
+					firstName = value;
+				}
+				if (userField.equals("Last Name")) {
+					lastName = line.next();
+					lastName = value;
+				}
+				if (userField.equals("Phone Number")) {
+					phoneNumber = line.nextInt();
+					phoneNumber = Integer.parseInt(value);
+				}
+				if (userField.equals("Address")) {
+					address = line.next();
+					address = value;
+    			}
+				if (userField.equals("Image")) {
+					avatar = value;
+				}
+			}
+			line.close();
+
+        if (getUser(userName) == null) {
+            User u = new User(userName, firstName, lastName, phoneNumber, address);
+            u.setAvatar(avatar);
+            users.add(u);
+        }
     }       //Moved to File Reader ^^^^
 
     public static boolean saveArtwork(Artwork art) {
