@@ -22,7 +22,12 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
-
+/**
+ * @author Sam Huxtable
+ * @author Hunter Zheung
+ * @author Richard
+ * @author Corey
+ */
 public class SystemController extends Application {
 
     private static Stage window;
@@ -64,31 +69,6 @@ public class SystemController extends Application {
 
     @FXML
     ImageView imgProfile;
-    //User Profile Variables
-
-    @FXML
-     Label lblName;
-
-    @FXML
-    private Label lblUsername;
-
-    @FXML
-    private Label lblPhone;
-
-    @FXML
-    private Button btnEditProfile;
-
-    @FXML
-    private ImageView imgUser;
-
-    @FXML
-    private Hyperlink lnkEditProfileImage;
-
-    @FXML
-    private Hyperlink lnkBiddingHistory;
-
-    @FXML
-    private Label lblAddress;
 
     public static void main(String[] args) {
         Data.populate();

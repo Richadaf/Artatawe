@@ -163,7 +163,7 @@ public class DrawingController {
 
             try {
                 ImageIO.write(SwingFXUtils.fromFXImage(wim, null), "png", profilePic);
-                SystemController.user.setAvatar(imageName);
+                SystemController.user.setAvatar(profilePic.getAbsolutePath());
                 imageSaved();
             } catch (Exception e) {
                 System.out.print("Failed to save image: " + e);
