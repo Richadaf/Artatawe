@@ -1,21 +1,21 @@
 package gui;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.io.File;
 
-public class UserProfileController extends Application {
+public class UserProfileController extends Application{
+
 
     @FXML
-    private Label lblName;
+    Label lblName;
 
     @FXML
     private Label lblUsername;
@@ -38,15 +38,18 @@ public class UserProfileController extends Application {
     @FXML
     private Label lblAddress;
 
-	@Override
-	public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("gui/userProfile.fxml"));
-        primaryStage.setTitle("User Profile");
-        primaryStage.setScene(new Scene(root, 441, 300));
-        primaryStage.show();
-	}
+    @FXML
+    private void initialize() {
+        lblName.setText(SystemController.user.getFirstName() +  " " + SystemController.user.getLastName());
+        lblUsername.setText(SystemController.user.getUserName());
+        lblPhone.setText(SystemController.user.getPhoneNumber());
+        lblAddress.setText(SystemController.user.getAddress());
+        Image imageFile = new Image(SystemController.user.getAvatar());
+        imgUser.setImage(imageFile);
+    }
 
-    public static void main(String[] args) {
-        launch(args);
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+
     }
 }
