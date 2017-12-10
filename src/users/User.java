@@ -1,5 +1,6 @@
 package users;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
@@ -28,14 +29,14 @@ public class User {
      * @param phoneNumber The user's Phone Number
      * @param address  The user's Address
      */
-    public User(String userName, String firstName, String lastName, String phoneNumber, String address ) {
+    public User(String userName, String firstName, String lastName, String phoneNumber, String address, String avatar ) {
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.address = address;
 //        userId = count.incrementAndGet(); 
-        avatar = "";//images/User_Avatar.png"; // TODO: default avatar
+        this.avatar = "images/User_Avatar.png"; // TODO: default avatar
         this.favoriteUsers = new ArrayList<>();
         this.biddingHistory = new BiddingHistory();
         
@@ -126,7 +127,5 @@ public class User {
     public String toString(){
         return "UserName:-" + userName + "\n" + "First Name:-" + firstName + "\n"  + "Last Name:-" + lastName + "\n" + "Phone Number:-" + phoneNumber + "\n" + "Address:-" + address + "\n" + "Image:-" + avatar;
     }
-
-
-
 }
+

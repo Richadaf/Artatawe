@@ -1,2 +1,4 @@
-admin John Smith 123 Swansea 
+admin John Smith 123 Swansea images/User_Avatar.png
+numbah1 Simon Jones 321 Cardiff images/User_Avatar.png
+2nd Mike Phillips 029378478547 Wales images/User_Avatar.png
 --end--
