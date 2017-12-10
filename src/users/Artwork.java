@@ -6,6 +6,7 @@ package users;
 
 public class Artwork {
 
+    private Boolean completed = false;
     private String seller;
     private String title;
     private String description;
@@ -67,7 +68,19 @@ public class Artwork {
      * @param bidsLeft
      */
     public void setBidsLeft(int bidsLeft) {
-        this.bidsLeft = bidsLeft;
+        if(bidsLeft == 0) {
+            completed = true;
+        } else {
+            this.bidsLeft = bidsLeft;
+        }
+    }
+
+    /**
+     * Return whether the artwork is completed or not
+     * @return completed
+     */
+    public Boolean getCompleted() {
+        return completed;
     }
 
     /**
