@@ -4,27 +4,48 @@
  * and open the template in the editor.
  */
 package data;
+
+import static data.Data.FILE_NAME;
+import static data.Data.populate;
+import static data.FileReader.readFile;
 import users.User;
 
 /**
  *
- * @author 863266
+ * @author Smith
  */
 public class Test {
         public static void main(String[] args) {
+            readFile(FILE_NAME);
+                   
             //Populate users.txt            
-            Data.populate();
-            users.User admin = new users.User("admin", "John", "Smith", "123", "Swansea");
-            Data.saveUser(admin);     
+            populate();
+            User admin = new users.User("admin", "John", "Smith", "123", "Swansea", "images/User_Avatar.png");
+            User User1 = new User("numbah1", "Simon", "Jones", "321", "Cardiff", "images/User_Avatar.png");
+            User User2 = new User("2nd", "Mike", "Phillips", "029378478547", "Wales", "images/User_Avatar.png");
+//            saveUser(admin);
+//            saveUser(User1);
+//            saveUser(User2);
             
-            //Read users.txt
-            if (Data.getUser(admin) == null) {
-                System.err.println("USER NOT FOUND");
-            }
-            Data.userToTxt(Data.getUser(admin));
+            //Read users.txt          
+                        
+            BSTreeNode root = null;
+            BSTree userTree = new BSTree(root);
+
+            userTree.insertProfile(admin);
+            userTree.insertProfile(User1);
+            userTree.printLeftToRight();
+            System.out.println("=========");
+            System.out.println("Adding 2");
+            System.out.println("=========");
+            userTree.insertProfile(User2);
+            userTree.printLeftToRight();
             
+            String p = "admin";  
             
+            //TODO: impliment tree search to return user profile.
+                        
         }
-                    
-            //Find user data from users.txt
+    
+    
 }

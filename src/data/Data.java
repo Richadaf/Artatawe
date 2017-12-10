@@ -1,5 +1,6 @@
 package data;
 
+import static data.FileReader.readFile;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,13 +16,14 @@ import users.User;
  * The Data class is responsible for saving information about all users, artwork
  * and other related information to file
  *
- * @author Richard Famoroti
+ * @author Richard Famoroti & 863266
  *
  *
  */
 public class Data {
 
     private static final String FILE_DELIMETER = "--end--";
+    public static final String FILE_NAME = "users.txt"; //gloably change filename
     private static ArrayList<User> users = new ArrayList<User>();
     private static ArrayList<Artwork> artworks = new ArrayList<Artwork>();
     //TOEO: Artwor, Bidding History
@@ -44,7 +46,7 @@ public class Data {
      */
     public static ArrayList<Artwork> getAllArtworks() {
         return artworks;
-    } 
+    }
 
     //SAVE_USERFILE(file: UserFile): Boolean
     /**
@@ -57,7 +59,7 @@ public class Data {
     private static User mUser;
 
     public static boolean saveUser(User mUser) {
-        File file = new File("users.txt");
+        File file = new File(FILE_NAME);
         BufferedWriter writer = null;
 
         try {
@@ -101,11 +103,11 @@ public class Data {
 
     public static String userToTxt(User u) {
         String txtProfile = "";
-        txtProfile += u.getUserName() + " ";
-        txtProfile += u.getFirstName() + " ";
-        txtProfile += u.getLastName() + " ";
-        txtProfile += u.getPhoneNumber() + " ";
-        txtProfile += u.getAddress() + " ";
+        txtProfile += u.getUserName() + "\t";
+        txtProfile += u.getFirstName() + "\t";
+        txtProfile += u.getLastName() + "\t";
+        txtProfile += u.getPhoneNumber() + "\t";
+        txtProfile += u.getAddress() + "\t";
         return txtProfile;
     }
 
@@ -114,7 +116,7 @@ public class Data {
      * Resets all files back to empty
      */
     public static void reset() {
-        File file = new File("users.txt");
+        File file = new File(FILE_NAME);
         if (file.isFile()) {
             file.delete();
             return;
@@ -150,7 +152,7 @@ public class Data {
     private static Boolean checkUserExistInFile(String userName) {
         Scanner scanner = null;
         try {
-            scanner = new Scanner(new File("users.txt"));
+            scanner = new Scanner(new File(FILE_NAME));
             String currentLine;
 
             while (scanner.hasNextLine()) {
@@ -176,60 +178,63 @@ public class Data {
 
     public static void populate() {
 
-        File file = new File("users.txt");
+        File file = new File(FILE_NAME);
         if (!file.isFile()) {
             return;
         }
+        readFile(FILE_NAME);
+//		Scanner fileScan = null;
+//		try {
+//			fileScan = new Scanner(file);
+//		} catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//		}
+//		fileScan.useDelimiter(FILE_DELIMETER);
+//		String userName = "";
+//		String firstName = "";
+//		String lastName = "";
+//		int phoneNumber = -1;
+//		String address = "";
+//		String avatar = "";
+//		while(fileScan.hasNextLine()){
+//			
+//			Scanner line = new Scanner(fileScan.nextLine());
+//			line.useDelimiter(":-|\n|".concat(FILE_DELIMETER));
+//			while(line.hasNext()){
+//				String userField = line.next();
+//				String value = line.next();
+//				if (userField.equals("UserName")) {
+////					userName = line.next();
+//					userName = value;
+//				} 
+//				if (userField.equals("First Name")) {
+////					firstName = line.next();
+//					firstName = value;
+//				} 
+//				if (userField.equals("Last Name")) {
+////					lastName = line.next();
+//					lastName = value;
+//				}
+//				if (userField.equals("Phone Number")) {
+////					phoneNumber = line.nextInt();
+//					phoneNumber = Integer.parseInt(value);
+//				} 
+//				if (userField.equals("Address")) {
+////					address = line.next();
+//					address = value;
+//				}
+//				if (userField.equals("Image")) {
+//					avatar = value;
+//				}
+//			}
+//			//line.close();
 
-        Scanner fileScan = null;
-
-        try {
-            fileScan = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        fileScan.useDelimiter(FILE_DELIMETER);
-        String userName = "";
-        String firstName = "";
-        String lastName = "";
-        String phoneNumber = "";
-        String address = "";
-
-        while (fileScan.hasNextLine()) {
-
-            Scanner line = new Scanner(fileScan.nextLine());
-            line.useDelimiter(":|\n|".concat(FILE_DELIMETER));
-
-            while (line.hasNext()) {
-                String userField = line.next();
-//                String value = line.next();
-                if (userField.equals("UserName")) {
-                    userName = line.next();
-//                    userName = value;
-                }
-                if (userField.equals("First Name")) {
-                    firstName = line.next();
-//                    firstName = value;
-                }
-                if (userField.equals("Last Name")) {
-                    lastName = line.next();
-//                    lastName = value;
-                }
-                if (userField.equals("Phone Number")) {
-                    phoneNumber = line.next();
-                }
-                if (userField.equals("Address")) {
-                    address = line.next();
-//                    address = value;
-                }
-            }
-            //line.close();
-        }
-        if (getUser(mUser) == null) {
-            users.add(new User(userName, firstName, lastName, String.valueOf(phoneNumber), address));
-        }
-    }
+//        if (getUser(userName) == null) {
+//            User u = new User(userName, firstName, lastName, phoneNumber, address);
+//            u.setAvatar(avatar);
+//            users.add(u);
+//        }
+    }       //Moved to File Reader ^^^^
 
     public static boolean saveArtwork(Artwork art) {
 
@@ -311,7 +316,7 @@ public class Data {
 			return checkedUser;
 		}*/
         return null;
-    } 
+    }
 
     private static Artwork checkArtExistInFile(String title) {
         Scanner scanner = null;
