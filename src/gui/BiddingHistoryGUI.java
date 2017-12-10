@@ -103,13 +103,6 @@ public class BiddingHistoryGUI extends Application {
      // Handle a button event
         btnProfile.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-            	Browsing b = new Browsing();
-            	try {
-					b.start(primaryStage);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
             }
         });
 

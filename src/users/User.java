@@ -7,11 +7,11 @@ import java.util.ArrayList;
  * @author 869298 & 863266
  */
 public class User {
-    private String userName;
-    private String firstName;
-    private String lastName;
-    private String phoneNumber;
-    private String address;
+    private final String USER_NAME;
+    private final String FIRST_NAME;
+    private final String LAST_NAME;
+    private final String PHONE_NUMBER;
+    private final String ADDRESS;
     private String avatar;
     private ArrayList<User> favoriteUsers;
     private BiddingHistory biddingHistory;
@@ -23,14 +23,15 @@ public class User {
      * @param lastName The user's Last name
      * @param phoneNumber The user's Phone Number
      * @param address  The user's Address
+     * @param avatar The user's avatar
      */
-    public User(String userName, String firstName, String lastName, String phoneNumber, String address, String avatar ) {
-        this.userName = userName;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.address = address;
-//        userId = count.incrementAndGet(); 
+    public User(String userName, String firstName, String lastName,
+            String phoneNumber, String address, String avatar ) {
+        this.USER_NAME = userName;
+        this.FIRST_NAME = firstName;
+        this.LAST_NAME = lastName;
+        this.PHONE_NUMBER = phoneNumber;
+        this.ADDRESS = address;
         this.avatar = "images/User_Avatar.png"; // TODO: default avatar
         this.favoriteUsers = new ArrayList<>();
         this.biddingHistory = new BiddingHistory();
@@ -48,28 +49,28 @@ public class User {
      * @return The username
      */
     public String getUserName() {
-        return userName;
+        return USER_NAME;
     }
     /**
      *  Get this user's FirstName
      * @return  The First Name
      */
     public String getFirstName() {
-        return firstName;
+        return FIRST_NAME;
     }
     /**
      *  Get this user's Last Name
      * @return  The Last Name
      */
     public String getLastName() {
-        return lastName;
+        return LAST_NAME;
     }
     /**
      *  Get this user's PhoneNumber
      * @return The user's PhoneNumber
      */
     public String getPhoneNumber() {
-        return phoneNumber;
+        return PHONE_NUMBER;
     }
     /**
      * get a list of the user's favorite users
@@ -83,7 +84,7 @@ public class User {
      * @return The user's Address
      */
     public String getAddress() {
-        return address;
+        return ADDRESS;
     }
     /**
      * Get the user's Avatar
@@ -123,7 +124,10 @@ public class User {
      */
     @Override
     public String toString(){
-        return "UserName:-" + userName + "\n" + "First Name:-" + firstName + "\n"  + "Last Name:-" + lastName + "\n" + "Phone Number:-" + phoneNumber + "\n" + "Address:-" + address + "\n" + "Image:-" + avatar;
+        return "UserName:-" + USER_NAME + "\n" + "First Name:-" + FIRST_NAME +
+                "\n"  + "Last Name:-" + LAST_NAME + "\n" + "Phone Number:-" + 
+                PHONE_NUMBER + "\n" + "Address:-" + ADDRESS + "\n" + 
+                "Image:-" + avatar;
     }
 }
 
