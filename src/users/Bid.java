@@ -105,3 +105,7 @@ public class Bid {
 		this.wonBid = wonBid;
 	}
 }
+	public String toString(){
+	return "New Bid:- " + newBid + "\nOld Bid:- " + oldBid + "\nBids Left:- " + "\nBidder Name:- " +
+			"\nSeller Name:- " + sellerName + "\nArtwork Name:- " + artworkName + "\nBid Time:- " + bidTime;
+	}
