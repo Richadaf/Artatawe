@@ -1,0 +1,7 @@
+#pane{
+    -fx-background-image: url("file:/C:/Users/Hunte/Pictures/Saved%20Pictures/Christmas-Lights-Background.jpeg");
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30,0.5,0,0);
+}
