@@ -1,4 +1,3 @@
-
 package data;
 
 import java.io.BufferedWriter;
@@ -70,7 +69,7 @@ public class Data {
                 Data.reset();
                 writer = new BufferedWriter(new FileWriter(file));
                 for (User u : getAllUsers()) {
-                    writer.write(u.toString());
+                    writer.write(userToTxt(u));
                     writer.write("\n");
                     writer.write(FILE_DELIMETER);
                     writer.write("\n");
@@ -82,7 +81,7 @@ public class Data {
             if (checkUserExistInFile(mUser.getUserName()) == null) {
                 users.add(mUser);
                 writer = new BufferedWriter(new FileWriter(file, true));
-                writer.write(mUser.toString());
+                writer.write(userToTxt(mUser));
                 writer.write("\n");
                 writer.write(FILE_DELIMETER);
                 writer.write("\n");
@@ -98,6 +97,21 @@ public class Data {
         return false;
     }
 
+    /**
+     * Responsible for saving user to file
+     *
+     * @param u user
+     * @return User information needed to be printed into the file
+     */
+    public static String userToTxt(User u) {
+        String txtProfile = "";
+        txtProfile += u.getUserName() + "\t";
+        txtProfile += u.getFirstName() + "\t";
+        txtProfile += u.getLastName() + "\t";
+        txtProfile += u.getPhoneNumber() + "\t";
+        txtProfile += u.getAddress() + "\t";
+        return txtProfile;
+    }
 
     /**
      * Resets all files back to empty
@@ -190,7 +204,7 @@ public class Data {
                 }
             }
 
-            Artwork foundArtwork = null;
+           /* Artwork foundArtwork = null;
             foundArtwork = checkArtExistInFile(art.getTitle());
 
             if (foundArtwork == null) {
@@ -200,7 +214,7 @@ public class Data {
                 writer.write("\n");
                 writer.write(FILE_DELIMETER);
                 writer.write("\n");
-            }
+            }*/
             if (writer != null) {
                 writer.close();
             }
@@ -234,20 +248,38 @@ public class Data {
      * @param title user-defined title of the artwork
      * @return Artwork instance with matching title
      */
-	public static Artwork getArtwork(String title){
-		for(Artwork a: artworks){
-			if(a.getTitle().equalsIgnoreCase(title)){
-				return a;
-			}
-		}
-		/*//User isnt found in arrayList, so check file name
-		User checkedUser = checkUserExistInFile(username);
-		if(checkedUser != null){
-			users.add(checkedUser);
-			return checkedUser;
-		}*/
+    public static Artwork getArtwork(String title){
+        for(Artwork a: artworks){
+            if(a.getTitle().equalsIgnoreCase(title)){
+                return a;
+            }
+        }
+      /*//User isnt found in arrayList, so check file name
+      User checkedUser = checkUserExistInFile(username);
+      if(checkedUser != null){
+         users.add(checkedUser);
+         return checkedUser;
+      }*/
         return null;
     }
+
+    public static ArrayList<Artwork> getArtworkBySellerName(String seller){
+        ArrayList<Artwork> everyArtworks = getAllArtworks();
+        ArrayList<Artwork> temp = new ArrayList<Artwork>();
+        for(int i=0;i<everyArtworks.size();i++){
+            if (everyArtworks.get(i).getSeller().equalsIgnoreCase(seller)) {
+                temp.add(everyArtworks.get(i));
+            }
+        }
+      /*//User isnt found in arrayList, so check file name
+      User checkedUser = checkUserExistInFile(username);
+      if(checkedUser != null){
+         users.add(checkedUser);
+         return checkedUser;
+      }*/
+        return temp;
+    }
+
     public static void populate(){
         File file = new File("users.txt");
         if(!file.isFile()){
@@ -274,23 +306,23 @@ public class Data {
                 String userField = line.next();
                 String value = line.next();
                 if (userField.equals("UserName")) {
-//					userName = line.next();
+//             userName = line.next();
                     userName = value;
                 }
                 if (userField.equals("First Name")) {
-//					firstName = line.next();
+//             firstName = line.next();
                     firstName = value;
                 }
                 if (userField.equals("Last Name")) {
-//					lastName = line.next();
+//             lastName = line.next();
                     lastName = value;
                 }
                 if (userField.equals("Phone Number")) {
-//					phoneNumber = line.nextInt();
+//             phoneNumber = line.nextInt();
                     phoneNumber = Integer.parseInt(value);
                 }
                 if (userField.equals("Address")) {
-//					address = line.next();
+//             address = line.next();
                     address = value;
                 }
                 if (userField.equals("Image")) {
@@ -305,6 +337,89 @@ public class Data {
             users.add(u);
         }
     }
+
+    public static void populateArtwork(){
+        File file = new File("artworks.txt");
+        if(!file.isFile()){
+            return;
+        }
+        Scanner fileScan = null;
+        try {
+            fileScan = new Scanner(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        fileScan.useDelimiter(FILE_DELIMETER);
+        String seller = "";
+        String title = "";
+        String description = "";
+        String photo = "";
+        String nameOfCreator = "";
+        int yearMade = -1;
+        double reservePrice = -1.0;
+        double currentPrice = -1.0;
+        int bidsAllowed = -1;
+        String timeEntered  = "";
+        double height = -1.0;
+        double width = -1.0;
+        while(fileScan.hasNextLine()){
+
+            Scanner line = new Scanner(fileScan.nextLine());
+            line.useDelimiter(":-|\n|".concat(FILE_DELIMETER));
+            while(line.hasNext()){
+                String artworkField = line.next();
+                String value = line.next();
+                if (artworkField.equals("Seller")) {
+//             userName = line.next();
+                    seller = value;
+                }
+                if (artworkField.equals("Title")) {
+//             firstName = line.next();
+                    title = value;
+                }
+                if (artworkField.equals("Description")) {
+//             lastName = line.next();
+                    description = value;
+                }
+                if (artworkField.equals("Photo")) {
+//             phoneNumber = line.nextInt();
+                    photo = value;
+                }
+                if (artworkField.equals("Creator")) {
+//             address = line.next();
+                    nameOfCreator = value;
+                }
+                if (artworkField.equals("YearMade")) {
+                    yearMade = Integer.parseInt(value);
+                }
+                if (artworkField.equals("reservePrice")) {
+                    reservePrice = Double.parseDouble(value);
+                }
+                if (artworkField.equals("CurrentPrice")) {
+                    currentPrice = Double.parseDouble(value);
+                }
+                if (artworkField.equals("BidsAllowed")) {
+                    bidsAllowed = Integer.parseInt(value);
+                }
+                if (artworkField.equals("TimeEntered")) {
+                    timeEntered = value;
+                }
+                if (artworkField.equals("Height")) {
+                    height = Double.parseDouble(value);
+                }
+                if (artworkField.equals("Width")) {
+                    width =  Double.parseDouble(value);
+                }
+            }
+            //line.close();
+        }
+        if(getArtwork(seller) == null){
+            Artwork a = new Artwork(seller, title, description, photo, nameOfCreator, yearMade, reservePrice,
+                    currentPrice, bidsAllowed, timeEntered, height, width);
+            artworks.add(a);
+        }
+    }
+
     /**
      * Check if there's already an artwork in the database {@code artwork}
      *
@@ -336,4 +451,3 @@ public class Data {
 
     }
 }
-
