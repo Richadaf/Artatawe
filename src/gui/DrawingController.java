@@ -139,7 +139,7 @@ public class DrawingController {
     public void imageSaved() {
         try {
             Stage popUp = new Stage();
-            Parent popUpPane = FXMLLoader.load(getClass().getResource("popUp.fxml"));
+            Parent popUpPane = FXMLLoader.load(getClass().getResource("PopUp.fxml"));
             popUp.setTitle("Image Saved");
             popUp.setScene(new Scene(popUpPane, 600, 400));
             popUp.show();

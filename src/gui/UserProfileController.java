@@ -85,7 +85,7 @@ public class UserProfileController extends Application{
 
     @FXML
     void onBackSelected() throws  Exception{
-        Parent userProfileParent = FXMLLoader.load(getClass().getResource("userProfile.fxml"));
+        Parent userProfileParent = FXMLLoader.load(getClass().getResource("UserProfile.fxml"));
         Stage stage = new Stage();
         stage.setTitle("User Profile - " + SystemController.user.getUserName());
         stage.setScene(new Scene(userProfileParent, 600, 400));

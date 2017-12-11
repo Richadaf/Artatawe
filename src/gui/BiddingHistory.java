@@ -101,7 +101,7 @@ public class BiddingHistory {
 	public void backToProfile(ActionEvent event) {
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		try{
-			Parent userProfile = FXMLLoader.load(getClass().getResource("userProfile.fxml"));
+			Parent userProfile = FXMLLoader.load(getClass().getResource("UserProfile.fxml"));
 			window.setScene(new Scene(userProfile,600,400));
 		}catch(Exception f){
 			f.printStackTrace();

@@ -75,7 +75,7 @@ public class SystemController extends Application {
         Parent signUpParent = FXMLLoader.load(getClass().getResource("SignUp.fxml"));
         signUpScene = new Scene(signUpParent);
 
-        Parent loginParent = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Parent loginParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
         loginScene = new Scene(loginParent);
 
 
@@ -100,7 +100,7 @@ public class SystemController extends Application {
                 lblLoginResponse.setVisible(true);
             } else {
                 user = searchUserResult;
-                //Parent userProfileParent = FXMLLoader.load(getClass().getResource("userProfile.fxml"));
+                //Parent userProfileParent = FXMLLoader.load(getClass().getResource("UserProfile.fxml"));
                 //Scene userProfileScene = new Scene(userProfileParent);
 
 //                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
