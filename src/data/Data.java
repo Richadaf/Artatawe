@@ -1,7 +1,6 @@
 
 package data;
 
-import static data.FileReader.readFile;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -71,7 +70,7 @@ public class Data {
                 Data.reset();
                 writer = new BufferedWriter(new FileWriter(file));
                 for (User u : getAllUsers()) {
-                    writer.write(userToTxt(u));
+                    writer.write(u.toString());
                     writer.write("\n");
                     writer.write(FILE_DELIMETER);
                     writer.write("\n");
@@ -83,7 +82,7 @@ public class Data {
             if (checkUserExistInFile(mUser.getUserName()) == null) {
                 users.add(mUser);
                 writer = new BufferedWriter(new FileWriter(file, true));
-                writer.write(userToTxt(mUser));
+                writer.write(mUser.toString());
                 writer.write("\n");
                 writer.write(FILE_DELIMETER);
                 writer.write("\n");
@@ -99,21 +98,6 @@ public class Data {
         return false;
     }
 
-    /**
-     * Responsible for saving user to file
-     *
-     * @param u user
-     * @return User information needed to be printed into the file
-     */
-    public static String userToTxt(User u) {
-        String txtProfile = "";
-        txtProfile += u.getUserName() + "\t";
-        txtProfile += u.getFirstName() + "\t";
-        txtProfile += u.getLastName() + "\t";
-        txtProfile += u.getPhoneNumber() + "\t";
-        txtProfile += u.getAddress() + "\t";
-        return txtProfile;
-    }
 
     /**
      * Resets all files back to empty

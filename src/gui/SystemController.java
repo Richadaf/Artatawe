@@ -106,16 +106,23 @@ public class SystemController extends Application {
                 lblLoginResponse.setVisible(true);
             } else {
                 user = searchUserResult;
-                Parent userProfileParent = FXMLLoader.load(getClass().getResource("userProfile.fxml"));
-                Scene userProfileScene = new Scene(userProfileParent);
+                //Parent userProfileParent = FXMLLoader.load(getClass().getResource("userProfile.fxml"));
+                //Scene userProfileScene = new Scene(userProfileParent);
+
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.setTitle("User Profile - Artatawe");
 
 
+                Browsing Browser = new Browsing();
+                try{
+                    Browser.start(window);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
 
 
-                window.setScene(userProfileScene);
-                window.show();
+                /*window.setScene(userProfileScene);
+                window.show();*/
             }
         }
     }
