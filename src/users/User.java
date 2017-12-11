@@ -1,4 +1,6 @@
 package users;
+import gui.BiddingHistory;
+
 import java.util.ArrayList;
 
 
@@ -55,7 +57,7 @@ public class User {
         this.ADDRESS = address;
         this.avatar = "images/User_Avatar.png"; // default avatar
         this.favoriteUsers = new ArrayList<>();
-        this.biddingHistory = new BiddingHistory();     
+        this.biddingHistory = new BiddingHistory();
     }
     /**
      * Get the user's userID

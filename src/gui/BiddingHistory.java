@@ -1,4 +1,12 @@
-package users;
+package gui;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import users.Bid;
+
 import java.util.ArrayList;
 
 /**
@@ -88,5 +96,15 @@ public class BiddingHistory {
 	 */
 	public ArrayList<Bid> getCompletedAuction() {
 		return completedAuction;
+	}
+
+	public void backToProfile(ActionEvent event) {
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		try{
+			Parent userProfile = FXMLLoader.load(getClass().getResource("userProfile.fxml"));
+			window.setScene(new Scene(userProfile,600,400));
+		}catch(Exception f){
+			f.printStackTrace();
+		}
 	}
 }

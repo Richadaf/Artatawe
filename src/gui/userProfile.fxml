@@ -35,14 +35,15 @@
             </ImageView>
             <Label layoutX="268.0" layoutY="200.0" prefHeight="20.0" prefWidth="77.0" text="Address:" />
             <Button fx:id="btnEditProfile" layoutX="79.0" layoutY="231.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="113.0" text="Edit Profile" />
+            <Button fx:id="btnBack" layoutX="79.0" layoutY="265.0" mnemonicParsing="false" onAction="#onBackSelected" prefHeight="27.0" prefWidth="113.0" text="Back" />
             <Label alignment="BASELINE_LEFT" layoutX="23.0" layoutY="19.0" prefHeight="38.0" prefWidth="225.0" text="User Profile" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Hyperlink fx:id="lnkEditProfileImage" layoutX="280.0" layoutY="21.0" text="Edit Profile Image" underline="true" />
+            <Hyperlink fx:id="lnkEditProfileImage" layoutX="280.0" layoutY="21.0" text="Edit Profile Image" underline="true" onAction="#chooseImg" />
             <Label fx:id="lblAddress" layoutX="268.0" layoutY="227.0" text="address" />
-            <Hyperlink fx:id="lnkBiddingHistory" layoutX="263.0" layoutY="252.0" text="Bidding History" underline="true" />
+            <Hyperlink fx:id="lnkBiddingHistory" layoutX="263.0" layoutY="252.0" onAction="#onBiddingHistoryClicked" text="Bidding History" underline="true" />
          </children>
       </AnchorPane>
    </children>

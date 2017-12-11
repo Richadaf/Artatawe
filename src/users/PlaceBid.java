@@ -6,6 +6,8 @@ package users;
  * @author Corey Kopotsha
  * @version 1.8
  */
+import gui.BiddingHistory;
+
 import javax.swing.JOptionPane;
 
 public class PlaceBid {

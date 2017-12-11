@@ -6,21 +6,14 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import users.User;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.stream.Stream;
 
 /**
  * @author Sam Huxtable
@@ -35,7 +28,7 @@ public class SystemController extends Application {
     private static Scene loginScene;
     private static Scene signUpScene;
     private static Scene Browsing;
-    private static Image 
+    public static String artworkView;
     //Login Variables
     @FXML
     private TextField txtLogin;

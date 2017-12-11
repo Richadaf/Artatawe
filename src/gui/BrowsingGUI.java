@@ -25,15 +25,12 @@ public class BrowsingGUI extends Application {
     VBox root2;
     ScrollPane artShow;
     Stage window;
-    Scene scene2;
-    StackPane layout2;
     Scene showArt;
-    Parent sample;
+
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         window = primaryStage;
-        sample = FXMLLoader.load(getClass().getResource("sample.fxml"));
         border = new BorderPane();
         border.setId("pane");
         artflow = new FlowPane();
@@ -60,7 +57,7 @@ public class BrowsingGUI extends Application {
             if(e.getClickCount() == 2){
                 try{
                     Parent UserProfile = FXMLLoader.load(getClass().getResource("UserProfile.fxml"));
-                    window.setScene(new Scene(UserProfile,400,400));
+                    window.setScene(new Scene(UserProfile,600,400));
                 }catch(Exception f){
                     f.printStackTrace();
                 }
@@ -114,7 +111,7 @@ public class BrowsingGUI extends Application {
         showArt = new Scene(border, 900, 500);
         showArt.getStylesheets().addAll(this.getClass().getResource("setBackground.CSS").toExternalForm());
         window.setScene(showArt);
-        window.setTitle("Hello World");
+        window.setTitle("Browsing");
         window.show();
     }
     /*@FXML
@@ -138,7 +135,11 @@ public class BrowsingGUI extends Application {
             artworkPhoto.setOnMouseClicked((MouseEvent e) -> {
                 if(e.getClickCount() == 2){
                     try{
+                        SystemController.artworkView = artworkPhoto.getImage().getUrl();
                         Parent ArtworkDetails = FXMLLoader.load(getClass().getResource("ArtworkDetails.fxml"));
+
+                        System.out.print(artworkPhoto.getImage().getUrl());
+                        System.out.print(SystemController.artworkView);
                         window.setScene(new Scene(ArtworkDetails,600,400));
                     }catch(Exception f){
                         f.printStackTrace();
