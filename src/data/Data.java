@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 import users.Artwork;
 import users.User;
-
+import users.Bid;
 /**
  * The Data class is responsible for saving information about all users, artwork
  * and other related information to file
@@ -25,6 +25,7 @@ public class Data {
     public static final String FILE_NAME = "users.txt"; //gloably change filename
     private static ArrayList<User> users = new ArrayList<User>();
     private static ArrayList<Artwork> artworks = new ArrayList<Artwork>();
+    private static ArrayList<Bid> bids = new ArrayList<Bid>();
     //TOEO: Artwor, Bidding History
     //ArtworkTree artworks;
 
@@ -46,6 +47,16 @@ public class Data {
     public static ArrayList<Artwork> getAllArtworks() {
         return artworks;
     }
+    
+    /**
+     * Returns all the bids registered to Artatawe.
+     *
+     * @return the bids registered to Artatawe
+     */
+    public static ArrayList<Bid> getAllBids() {
+        return bids;
+    }
+
 
     /**
      * Responsible for saving user to file
@@ -450,4 +461,172 @@ public class Data {
         return null;
 
     }
+    
+    /**
+     * Responsible for saving artwork to file
+     *
+     * @param art Artwork
+     * @return {@code true} if artwork was successfully saved to file;
+     * {@code false} otherwise.
+     */
+    public static boolean saveBid(Bid bid1) {
+    	
+        File file = new File("bids.txt");
+        BufferedWriter writer = null;
+
+        try {
+            if (!file.isFile()) {
+                file.createNewFile();
+            }
+
+            //if artwork isnt in list, add and refresh database
+            if (getArtwork(bid1.getBidderName()) == null) {
+                bids.add(bid1);
+
+                Data.reset();
+                writer = new BufferedWriter(new FileWriter(file));
+                for (Bid b : getAllBids()) {
+                    writer.write(b.toString());
+                    writer.write("\n");
+                    writer.write(FILE_DELIMETER);
+                    writer.write("\n");
+                }
+            }
+
+           /* Artwork foundArtwork = null;
+            foundArtwork = checkArtExistInFile(art.getTitle());
+
+            if (foundArtwork == null) {
+                artworks.add(art);
+                writer = new BufferedWriter(new FileWriter(file, true));
+                writer.write(art.toString());
+                writer.write("\n");
+                writer.write(FILE_DELIMETER);
+                writer.write("\n");
+            }*/
+            if (writer != null) {
+                writer.close();
+            }
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public static Bid getBid(String userName){
+        for(Bid b: bids){
+            if(b.getBidderName().equalsIgnoreCase(userName)){
+                return b;
+            }
+        }
+      /*//User isnt found in arrayList, so check file name
+      User checkedUser = checkUserExistInFile(username);
+      if(checkedUser != null){
+         users.add(checkedUser);
+         return checkedUser;
+      }*/
+        return null;
+    }
+    
+    /* Check if there's already an artwork in the database {@code artwork}
+    *
+    * @see Artwork
+    * @param title user-defined title of the artwork
+    * @return {@code true} if an artwork is found in the database
+    * {@code false} otherwise
+    */
+   private static Bid checkBidExistInFile(String userName) {
+       Scanner scanner = null;
+       try {
+           scanner = new Scanner(new File("bids.txt"));
+           String currentLine;
+
+           while (scanner.hasNextLine()) {
+               currentLine = scanner.nextLine();
+               if (currentLine.contains(userName)) {
+                   return getBid(userName);
+               }
+           }
+
+           if (scanner != null) {
+               scanner.close();
+           }
+       } catch (FileNotFoundException e) {
+           return null;
+       }
+       return null;
+
+   }
+   public static void populateBid(){
+       File file = new File("bids.txt");
+       if(!file.isFile()){
+           return;
+       }
+       Scanner fileScan = null;
+       try {
+           fileScan = new Scanner(file);
+       } catch (FileNotFoundException e) {
+           e.printStackTrace();
+       }
+       fileScan.useDelimiter(FILE_DELIMETER);
+   	 double newBid = -1.0;
+   	 double oldBid = -1.0;
+   	 int bidsLeft = -1;
+   	 String bidderName = "";
+   	 String sellerName = "";
+   	 String artworkName = "";
+   	 String bidTime = "";
+   	 boolean wonBid = false;
+       while(fileScan.hasNextLine()){
+
+           Scanner line = new Scanner(fileScan.nextLine());
+           line.useDelimiter(":-|\n|".concat(FILE_DELIMETER));
+           while(line.hasNext()){
+               String bidField = line.next();
+               String value = line.next();
+               if (bidField.equals("New Bid")) {
+//            userName = line.next();
+            	   newBid = Double.parseDouble(value);
+               }
+               if (bidField.equals("Old Bid")) {
+//            firstName = line.next();
+            	   oldBid = Double.parseDouble(value);
+               }
+               if (bidField.equals("Bids Left")) {
+//            lastName = line.next();
+            	   bidsLeft = Integer.parseInt(value);
+               }
+               if (bidField.equals("Bidder Name")) {
+//            address = line.next();
+            	   bidderName = value;
+               }
+               if (bidField.equals("Seller Name")) {
+            	   sellerName = value;
+               }
+               if (bidField.equals("Artwork Name")) {
+            	   artworkName = value;
+               }
+               if (bidField.equals("Bid Time")) {
+            	   bidTime = value;
+               }
+           //line.close();
+               
+       }
+}
+       if(getBid(bidderName) == null){
+           Bid b = new Bid(newBid, oldBid, bidsLeft, bidderName, sellerName, artworkName,
+        		   bidTime);
+           bids.add(b);
+   }
+ }
+   public static ArrayList<Bid> getBidsByBidderName(String bidder){
+       ArrayList<Bid> everyBid = getAllBids();
+       ArrayList<Bid> temp = new ArrayList<Bid>();
+       for(int i=0;i<everyBid.size();i++){
+           if (everyBid.get(i).getBidderName().equalsIgnoreCase(bidder)) {
+               temp.add(everyBid.get(i));
+           }
+       }
+       return temp;
+}
 }
