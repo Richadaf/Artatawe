@@ -23,9 +23,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Stream;
-
+import data.Data;
+import users.Bid;
 public class BiddingHistoryGUI extends Application {
 
     FlowPane root;
@@ -34,15 +36,12 @@ public class BiddingHistoryGUI extends Application {
     VBox root3;
     
     private TableView table = new TableView();
-    private final ObservableList<users.Bid> data = FXCollections.observableArrayList(
-    	    new users.Bid(20.0, 10, 3, "Sam", "Corey", "Mona Lisa", "19:20 06/12/17"),
-    	    new users.Bid(20.0, 10, 3, "Sam", "Corey", "Mona Lisa", "19:20 06/12/17"),
-    	    new users.Bid(20.0, 10, 3, "Sam", "Corey", "Mona Lisa", "19:20 06/12/17"),
-    	    new users.Bid(20.0, 10, 3, "Sam", "Corey", "Mona Lisa", "19:20 06/12/17"),
-    	    new users.Bid(20.0, 10, 3, "Sam", "Corey", "Mona Lisa", "19:20 06/12/17"),
-    	    new users.Bid(20.0, 10, 3, "Sam", "Corey", "Mona Lisa", "19:20 06/12/17"),
-    	    new users.Bid(20.0, 10, 3, "Sam", "Corey", "Mona Lisa", "19:20 06/12/17")
-    	);
+    private ArrayList<Bid> bids = new ArrayList<Bid>();
+    
+    SystemController s = new SystemController();
+   // String usersName = s.user.getFirstName() + " " + s.user.getLastName();
+     ArrayList<Bid> findBidder = Data.getBidsByBidderName("Corey");
+    private final ObservableList<users.Bid> data = FXCollections.observableArrayList(findBidder);
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -81,11 +80,7 @@ public class BiddingHistoryGUI extends Application {
         bidTime.setCellValueFactory(
                 new PropertyValueFactory<users.Bid, String>("bidTime"));
         
-        TableColumn compAuction = new TableColumn("Completed Auction");
-        bidTime.setCellValueFactory(
-                new PropertyValueFactory<users.Bid, String>("compAuction"));
-        
-        table.getColumns().addAll(artworkNameCol, sellerNameCol, yourBidCol, wonBid,bidTime,compAuction);
+        table.getColumns().addAll(artworkNameCol, sellerNameCol, yourBidCol, wonBid,bidTime);
         table.setItems(data);
         table.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
         
@@ -103,6 +98,13 @@ public class BiddingHistoryGUI extends Application {
      // Handle a button event
         btnProfile.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
+            	Browsing b = new Browsing();
+            	try {
+					b.start(primaryStage);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -115,6 +117,7 @@ public class BiddingHistoryGUI extends Application {
     }
 
     public static void main(String[] args) {
+    	Data.populateBid();
         launch(args);
     }
 
