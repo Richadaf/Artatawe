@@ -138,8 +138,6 @@ public class BrowsingGUI extends Application {
                         SystemController.artworkView = artworkPhoto.getImage().getUrl();
                         Parent ArtworkDetails = FXMLLoader.load(getClass().getResource("ArtworkDetails.fxml"));
 
-                        System.out.print(artworkPhoto.getImage().getUrl());
-                        System.out.print(SystemController.artworkView);
                         window.setScene(new Scene(ArtworkDetails,600,400));
                     }catch(Exception f){
                         f.printStackTrace();
