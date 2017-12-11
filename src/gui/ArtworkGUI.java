@@ -2,46 +2,49 @@ package gui;
 
 import javafx.scene.Scene;
 import javafx.scene.layout.FlowPane;
-        import javafx.application.Application;
-        import javafx.collections.FXCollections;
-        import javafx.collections.ObservableList;
-        import javafx.event.ActionEvent;
-        import javafx.event.EventHandler;
-        import javafx.fxml.FXMLLoader;
-        import javafx.geometry.Insets;
-        import javafx.geometry.Orientation;
-        import javafx.scene.Parent;
-        import javafx.scene.Scene;
-        import javafx.scene.control.Button;
-        import javafx.scene.control.Label;
-        import javafx.scene.control.ListView;
-        import javafx.scene.control.SelectionMode;
-        import javafx.scene.control.SplitPane;
-        import javafx.scene.control.TableColumn;
-        import javafx.scene.control.TableView;
-        import javafx.scene.control.cell.PropertyValueFactory;
-        import javafx.scene.image.Image;
-        import javafx.scene.image.ImageView;
-        import javafx.scene.input.MouseEvent;
-        import javafx.scene.layout.*;
-        import javafx.stage.Stage;
+import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.control.SplitPane;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
+import javafx.stage.Stage;
 
-        import java.util.Arrays;
-        import java.util.stream.Stream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Stream;
+import data.Data;
+import users.Artwork;
 
 public class ArtworkGUI extends Application {
 
-    FlowPane root;
+    
+	FlowPane root;
     BorderPane border;
     VBox root2;
     VBox root3;
-
+    
     private TableView table = new TableView();
-    private final ObservableList<users.Artwork> data = FXCollections.observableArrayList(
-            new users.Artwork("bob", "mona lisa", "description", "", "", 2000, 300,
-                    400, 1, "", 2, 2)
-            
-    );
+    private ArrayList<Artwork> artworks = new ArrayList<Artwork>();
+    
+     ArrayList<Artwork> findseller = Data.getArtworkBySellerName("Jim");
+    private final ObservableList<users.Artwork> data = FXCollections.observableArrayList(findseller);
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -111,6 +114,7 @@ public class ArtworkGUI extends Application {
     }
 
     public static void main(String[] args) {
+    	Data.populateArtwork();
         launch(args);
     }
 
@@ -118,4 +122,3 @@ public class ArtworkGUI extends Application {
 
 
 }
-
