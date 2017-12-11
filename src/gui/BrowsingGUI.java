@@ -11,7 +11,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import users.Artwork;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
@@ -25,6 +27,7 @@ public class BrowsingGUI extends Application {
     ScrollPane artShow;
     Stage window;
     Scene showArt;
+    private ArrayList<Artwork> a = new ArrayList<Artwork>();
 
 
     @Override
@@ -80,13 +83,17 @@ public class BrowsingGUI extends Application {
                 "file:/Users/huxtable/IdeaProjects/Artatawe/src/gui/moon.jpg",
         };
 
-        String[] paintings = {  "file:/Users/huxtable/IdeaProjects/Artatawe/src/gui/cake.jpg",
+        String[] paintings = {};
+        for(int i =0; i < a.size(); i++){
+            paintings[i].equals(a.get(i).getPhoto());
+        }
+        /*String[] paintings = {  "file:/Users/huxtable/IdeaProjects/Artatawe/src/gui/cake.jpg",
                 "file:/Users/huxtable/IdeaProjects/Artatawe/src/gui/cherry.jpg",
                 "file:/Users/huxtable/IdeaProjects/Artatawe/src/gui/mushroom.jpg",
                 "file:/Users/huxtable/IdeaProjects/Artatawe/src/gui/house.jpg",
                 "file:/Users/huxtable/IdeaProjects/Artatawe/src/gui/rainbow.jpg",
                 "file:/Users/huxtable/IdeaProjects/Artatawe/src/gui/snow.jpg",
-        };
+        };*/
 
         String[] all = Stream.concat(Arrays.stream(paintings), Arrays.stream(sculptures)).toArray(String[]::new);
 

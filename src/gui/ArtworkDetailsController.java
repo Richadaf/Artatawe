@@ -88,4 +88,21 @@ public class ArtworkDetailsController extends Application{
 
         }
     }
+    public String getSellerName() {
+        return sellerName.getText();
+    }
+
+
+    public int getCurrentPrice() {
+        return Integer.parseInt(currentPrice.getText());
+    }
+
+
+    public String getArtTitle() {
+        return artTitle.getText();
+    }
+
+    public int getBidsLeft() {
+        return bidsLeft;
+    }
 }

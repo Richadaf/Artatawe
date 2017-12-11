@@ -60,15 +60,13 @@ public class PlaceArtwork extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("placeArtwork.fxml"));
-        primaryStage.setTitle("Add new artwork");
-        primaryStage.setScene(new Scene(root, 582, 386));
-        primaryStage.show();
+
+            Parent root = FXMLLoader.load(getClass().getResource("PlaceArtwork.fxml"));
+            primaryStage.setTitle("PlaceArtwork");
+            primaryStage.setScene(new Scene(root, 600, 400));
+            primaryStage.show();
     }
+    private void initialize() {
 
-    public static void main(String[] args) {
-        launch(args);
     }
-
-
 }

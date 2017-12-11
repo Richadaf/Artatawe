@@ -60,10 +60,7 @@
             <TextField fx:id="txtReservePrice" layoutX="204.0" layoutY="164.0" prefHeight="26.0" prefWidth="82.0" />
             <ChoiceBox fx:id="chbTypeOfArtwork" layoutX="179.0" layoutY="25.0" prefHeight="27.0" prefWidth="106.0" />
             <TextField fx:id="txtNumOfBidsAllowed" layoutX="211.0" layoutY="199.0" prefHeight="26.0" prefWidth="76.0" />
-            <Text layoutX="27.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Demensions">
-               <font>
-                  <Font size="14.0" />
-               </font></Text>
+            <Text layoutX="27.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Demensions" />
             <Text layoutX="120.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="W" />
             <TextField fx:id="txtWidth" layoutX="143.0" layoutY="232.0" prefHeight="18.0" prefWidth="27.0" />
             <TextField fx:id="txtHeight" layoutX="201.0" layoutY="232.0" prefHeight="18.0" prefWidth="27.0" />

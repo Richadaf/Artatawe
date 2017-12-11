@@ -204,6 +204,4 @@ public class SystemController extends Application {
         window.show();
 
     }
-
-
 }

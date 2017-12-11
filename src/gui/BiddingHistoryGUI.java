@@ -94,19 +94,6 @@ public class BiddingHistoryGUI extends Application {
         
         border.setLeft(root2);
         border.setCenter(root3);
-        
-     // Handle a button event
-        btnProfile.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-            	Browsing b = new Browsing();
-            	try {
-					b.start(primaryStage);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-            }
-        });
 
 
         Scene showArt = new Scene(border, 900, 500);
