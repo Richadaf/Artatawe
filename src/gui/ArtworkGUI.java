@@ -43,7 +43,9 @@ public class ArtworkGUI extends Application {
     private TableView table = new TableView();
     private ArrayList<Artwork> artworks = new ArrayList<Artwork>();
     
-     ArrayList<Artwork> findseller = Data.getArtworkBySellerName("Jim");
+    SystemController s = new SystemController();
+    String usersName = s.user.getFirstName() + " " + s.user.getLastName();
+     ArrayList<Artwork> findseller = Data.getArtworkBySellerName(usersName);
     private final ObservableList<users.Artwork> data = FXCollections.observableArrayList(findseller);
 
     @Override
