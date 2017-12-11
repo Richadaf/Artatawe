@@ -66,6 +66,8 @@ public class SystemController extends Application {
 
     public static void main(String[] args) {
         Data.populate();
+        Data.populateArtwork();
+        Data.populateBid();
         launch(args);
     }
 

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.BiddingHistory">
+<VBox id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@setBackground.CSS" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.BiddingHistory">
    <children>
       <Pane prefHeight="48.0" prefWidth="600.0" />
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="191.0">
@@ -25,9 +25,9 @@
             <ScrollBar layoutX="543.0" layoutY="1.0" orientation="VERTICAL" prefHeight="197.0" prefWidth="17.0" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="108.0" prefWidth="629.0">
+      <AnchorPane id="\\" prefHeight="108.0" prefWidth="629.0" stylesheets="@setBackground.CSS">
          <children>
-            <Button fx:id="btnProfile" layoutX="54.0" layoutY="26.0" mnemonicParsing="false" text="Back to profile" onAction="#backToProfile"/>
+            <Button fx:id="btnProfile" layoutX="54.0" layoutY="26.0" mnemonicParsing="false" onAction="#backToProfile" text="Back to profile" />
          </children>
       </AnchorPane>
    </children>

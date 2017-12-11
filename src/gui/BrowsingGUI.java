@@ -1,5 +1,6 @@
 package gui;
 
+import data.Data;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -27,7 +28,8 @@ public class BrowsingGUI extends Application {
     ScrollPane artShow;
     Stage window;
     Scene showArt;
-    private ArrayList<Artwork> a = new ArrayList<Artwork>();
+    public ArrayList<Artwork> a = Data.getAllArtworks();
+
 
 
     @Override
@@ -83,17 +85,13 @@ public class BrowsingGUI extends Application {
                 "file:/Users/huxtable/IdeaProjects/Artatawe/src/gui/moon.jpg",
         };
 
-        String[] paintings = {};
-        for(int i =0; i < a.size(); i++){
-            paintings[i].equals(a.get(i).getPhoto());
-        }
-        /*String[] paintings = {  "file:/Users/huxtable/IdeaProjects/Artatawe/src/gui/cake.jpg",
+        String[] paintings = {  "file:/Users/huxtable/IdeaProjects/Artatawe/src/gui/cake.jpg",
                 "file:/Users/huxtable/IdeaProjects/Artatawe/src/gui/cherry.jpg",
                 "file:/Users/huxtable/IdeaProjects/Artatawe/src/gui/mushroom.jpg",
                 "file:/Users/huxtable/IdeaProjects/Artatawe/src/gui/house.jpg",
                 "file:/Users/huxtable/IdeaProjects/Artatawe/src/gui/rainbow.jpg",
                 "file:/Users/huxtable/IdeaProjects/Artatawe/src/gui/snow.jpg",
-        };*/
+        };
 
         String[] all = Stream.concat(Arrays.stream(paintings), Arrays.stream(sculptures)).toArray(String[]::new);
 
@@ -144,6 +142,8 @@ public class BrowsingGUI extends Application {
                         SystemController.artworkView = artworkPhoto.getImage().getUrl();
                         Parent ArtworkDetails = FXMLLoader.load(getClass().getResource("ArtworkDetails.fxml"));
 
+                        System.out.print(a.get(0).getTitle());
+
                         window.setScene(new Scene(ArtworkDetails,600,400));
                     }catch(Exception f){
                         f.printStackTrace();
@@ -151,9 +151,9 @@ public class BrowsingGUI extends Application {
                 }
             });
 
-            Label title = new Label("Title: Coast");
-            Label descrip = new Label("Description");
-            v.getChildren().addAll(artworkPhoto,title,descrip);
+            /*Label title = new Label("Title: Coast");
+            Label descrip = new Label("Description");*/
+            v.getChildren().addAll(artworkPhoto);
             v.setSpacing(10);
             v.setPadding(new Insets(50,15,15,15));
             artflow.getChildren().addAll(v);

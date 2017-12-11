@@ -1,0 +1,13 @@
+Seller:-s
+Title:-mona lisa
+Description:-asdf
+Photo:-file:/Users/huxtable/IdeaProjects/Artatawe/src/gui/moon.jpg
+Creator:-ben
+YearMade:-1999
+reservePrice:-89.0
+CurrentPrice:-100000.0
+BidsAllowed:-10
+TimeEntered:-12:23
+Height:-18.0
+Width:-2.0
+--end--
