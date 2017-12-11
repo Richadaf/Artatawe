@@ -52,6 +52,10 @@ public class ArtworkDetailsController extends Application{
     @FXML
     private void initialize() {
         sellerName.setText(SystemController.user.getFirstName() +  " " + SystemController.user.getLastName());
+        Image artI = new Image(SystemController.user.artwork);
+        artImage.setImage(artI);
+
+        sellerName.setText(SystemController.user.getFirstName() +  " " + SystemController.user.getLastName());
         Image imageFile = new Image(SystemController.user.getAvatar());
         profilePic.setImage(imageFile);
     }

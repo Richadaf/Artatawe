@@ -35,6 +35,7 @@ public class SystemController extends Application {
     private static Scene loginScene;
     private static Scene signUpScene;
     private static Scene Browsing;
+    private static Image 
     //Login Variables
     @FXML
     private TextField txtLogin;
@@ -109,11 +110,11 @@ public class SystemController extends Application {
                 //Parent userProfileParent = FXMLLoader.load(getClass().getResource("userProfile.fxml"));
                 //Scene userProfileScene = new Scene(userProfileParent);
 
-                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.setTitle("User Profile - Artatawe");
 
 
-                Browsing Browser = new Browsing();
+                BrowsingGUI Browser = new BrowsingGUI();
                 try{
                     Browser.start(window);
                 }catch (Exception e){
