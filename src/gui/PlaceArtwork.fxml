@@ -13,54 +13,66 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="441.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UserProfileController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="352.0" prefWidth="517.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UserProfileController">
    <children>
-      <AnchorPane prefHeight="483.0" prefWidth="429.0">
+      <AnchorPane prefHeight="386.0" prefWidth="502.0">
          <children>
-            <Label layoutX="25.0" layoutY="66.0" text="Title">
+            <Label layoutX="25.0" layoutY="67.0" text="Title">
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <Label fx:id="lblName" layoutX="303.0" layoutY="186.0" text="Description:">
+            <Label layoutX="364.0" layoutY="207.0" text="Description:">
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <Label layoutX="20.0" layoutY="96.0" text="Creator Name">
+            <Label layoutX="26.0" layoutY="101.0" text="Creator Name">
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <Label fx:id="lblUsername" layoutX="25.0" layoutY="125.0" text="Year" />
-            <Label layoutX="24.0" layoutY="157.0" text="Reserve Price £" />
-            <Label fx:id="lblPhone" layoutX="28.0" layoutY="187.0" text="Number of bids allowed" />
-            <ImageView fx:id="imgUser" fitHeight="142.0" fitWidth="142.0" layoutX="269.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+            <Label layoutX="26.0" layoutY="135.0" text="Year">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label layoutX="27.0" layoutY="169.0" text="Reserve Price £">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label layoutX="28.0" layoutY="204.0" text="Number of bids allowed">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <ImageView fx:id="imgUser" fitHeight="142.0" fitWidth="142.0" layoutX="333.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@tempImage.jpg" />
                </image>
             </ImageView>
-            <Button fx:id="btnEditProfile" layoutX="26.0" layoutY="269.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="113.0" text="Upload" />
+            <Button fx:id="btnUploadArtwork" layoutX="29.0" layoutY="301.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="113.0" text="Upload" />
             <Label alignment="BASELINE_LEFT" layoutX="23.0" layoutY="19.0" prefHeight="38.0" prefWidth="225.0" text="Place Artwork" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Hyperlink fx:id="lnkEditProfileImage" layoutX="272.0" layoutY="19.0" text="Edit Photo of Artwork" underline="true" />
-            <TextField layoutX="54.0" layoutY="62.0" />
-            <TextArea layoutX="269.0" layoutY="202.0" prefHeight="71.0" prefWidth="163.0" />
-            <TextField layoutX="116.0" layoutY="92.0" prefHeight="26.0" prefWidth="142.0" />
-            <TextField layoutX="69.0" layoutY="122.0" prefHeight="26.0" prefWidth="59.0" />
-            <TextField layoutX="119.0" layoutY="153.0" prefHeight="26.0" prefWidth="82.0" />
-            <ChoiceBox layoutX="147.0" layoutY="25.0" prefHeight="26.0" prefWidth="101.0" />
-            <TextField layoutX="174.0" layoutY="182.0" prefHeight="26.0" prefWidth="76.0" />
-            <Text layoutX="28.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Demensions" />
-            <Text layoutX="113.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="W" />
-            <TextField layoutX="134.0" layoutY="211.0" prefHeight="18.0" prefWidth="27.0" />
-            <TextField layoutX="184.0" layoutY="211.0" prefHeight="18.0" prefWidth="27.0" />
-            <TextField layoutX="235.0" layoutY="211.0" prefHeight="18.0" prefWidth="27.0" />
-            <Text layoutX="168.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="H" />
-            <Text layoutX="216.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="D" />
-            <Text layoutX="30.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Material" />
-            <TextField layoutX="79.0" layoutY="240.0" />
-            <Button fx:id="btnEditProfile1" layoutX="145.0" layoutY="269.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="113.0" text="Cancel" />
+            <Hyperlink fx:id="lnkEditProfileImage" layoutX="333.0" layoutY="19.0" text="Edit Photo of Artwork" underline="true" />
+            <TextField fx:id="txtTitle" layoutX="118.0" layoutY="62.0" />
+            <TextArea fx:id="txtDescription" layoutX="323.0" layoutY="243.0" prefHeight="89.0" prefWidth="163.0" />
+            <TextField fx:id="txtCreatorName" layoutX="143.0" layoutY="96.0" prefHeight="26.0" prefWidth="142.0" />
+            <TextField fx:id="txtYear" layoutX="226.0" layoutY="130.0" prefHeight="26.0" prefWidth="59.0" />
+            <TextField fx:id="txtReservePrice" layoutX="204.0" layoutY="164.0" prefHeight="26.0" prefWidth="82.0" />
+            <ChoiceBox fx:id="chbTypeOfArtwork" layoutX="179.0" layoutY="25.0" prefHeight="27.0" prefWidth="106.0" />
+            <TextField fx:id="txtNumOfBidsAllowed" layoutX="211.0" layoutY="199.0" prefHeight="26.0" prefWidth="76.0" />
+            <Text layoutX="27.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Demensions">
+               <font>
+                  <Font size="14.0" />
+               </font></Text>
+            <Text layoutX="120.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="W" />
+            <TextField fx:id="txtWidth" layoutX="143.0" layoutY="232.0" prefHeight="18.0" prefWidth="27.0" />
+            <TextField fx:id="txtHeight" layoutX="201.0" layoutY="232.0" prefHeight="18.0" prefWidth="27.0" />
+            <TextField fx:id="txtDimensions" layoutX="259.0" layoutY="232.0" prefHeight="18.0" prefWidth="27.0" />
+            <Text layoutX="183.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="H" />
+            <Text layoutX="240.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="D" />
+            <Text layoutX="29.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Material" />
+            <TextField fx:id="txtMaterial" layoutX="120.0" layoutY="265.0" />
+            <Button fx:id="btnCancel" layoutX="175.0" layoutY="301.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="113.0" text="Cancel" />
          </children>
       </AnchorPane>
    </children>
