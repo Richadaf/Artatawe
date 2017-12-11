@@ -10,7 +10,7 @@ public class Sculpture extends Artwork {
 
     private double depth;
     private String material;
-    private ArrayList<String> adPhotos = new ArrayList();
+    private ArrayList<String> adPhotos = new ArrayList<String>();
 
     /**
      * Constructs and instance of sculpture
