@@ -1,5 +1,7 @@
 package users;
 
+import gui.SystemController;
+
 /**
  * The Browsing class is responsible for holding all the necessary behaviours
  * needed for the right functionality of the Browsing GUI.
@@ -7,9 +9,6 @@ package users;
  */
 
 public class Browsing {
-    private User currentUser;
-
-    public Browsing() {}
 
     /**
      * Marks a seller as a favourite for the logged in user
@@ -19,12 +18,12 @@ public class Browsing {
      *        {@code false} otherwise
      */
     public boolean markFavorite(User favUser) {
-        for (int i=0; i < currentUser.getFavoriteUsers().size(); i++) {
-            if (currentUser.getFavoriteUsers().get(i).getUserName().equals(favUser.getUserName())) {
+        for (int i=0; i < SystemController.user.getFavoriteUsers().size(); i++) {
+            if (SystemController.user.getFavoriteUsers().get(i).getUserName().equals(favUser.getUserName())) {
               return false;
             }
         }
-        currentUser.addFavoriteUser(favUser);
+        SystemController.user.addFavoriteUser(favUser);
         return true;
     }
 }
