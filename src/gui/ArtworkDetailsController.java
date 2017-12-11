@@ -23,7 +23,7 @@ import javafx.stage.Window;
  */
 public class ArtworkDetailsController extends Application{
 
-
+    private int bidsLeft;
     @FXML
     private Label sellerName;
 
